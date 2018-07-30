@@ -1,0 +1,221 @@
+#Part 4: A Catastrophic Issue {-}
+
+```{r echo=FALSE, out.width = '25%'}
+knitr::include_graphics("wmata_logo.png")
+
+```
+
+
+Okay, I woke up the morning of the July 19th and found the two biggest roadblocks of the project waiting at my computer. What made it castrophic was that, along with these two issues, I had my first set of 90,000 routes.
+
+The first issue was that that day, Google had begun charging for their previously free API. A disastear for my student pockets, and so close to the solution. Well, I was too close to not try and find a replacement.
+
+The second issue was that my use of AWS had cost around $50, not something I was expected. Ooops.
+
+Well let's try and solve the first issue first.
+
+##Finding a Replacement for Google Routes API {-}
+Finding another API was only a mild headache. The most annoying aspect was finding one that suppored transit routes and not exclusively driving directions. To the rescue: Here API. It had everything I wanted, except that no kind soul had made an R package to easily access it. It became pretty obvious during that day of research that Here was my best option. I would have to write some of my own functions to get it to work.
+
+###Functions {-}
+Basically, I want to take my 3 lists of 90,000 rows and 360,000 indivudal cooridnates and feed them into the Here API.  
+
+The API requires that the link I use look like:
+
+> route.cit.api.here .com/routing/7.2/calculateroute.json?waypoint0=52.5208%2C13.4093&waypoint1=52.5034%2C13.3295&mode=fastest%3BpublicTransport &combineChange=true&app_id=DemoAppId01082013GAL&app_code=AJKnXv84fjrb0KIHawS0Tg"
+
+All coordinates needed to be adjusted to be strings that resemble `52.5208%2C13.4093`.
+
+```{r}
+here_mcoord_fix <- function(df){
+  latitude <- df[,1]
+  longitude <- df[,2]
+  url2 <- paste0(longitude, "%2C", latitude)
+  return(url2)
+}
+```
+
+Now, there are several constants in the URL that can be set to variables. Then everything can be easily pasted together into proper URLS.
+
+```{r}
+base_url <- "https://route.cit.api.here.com/routing/7.2/calculateroute.json"
+xmode <- "&mode=fastest%3BpublicTransport&combineChange=true"
+#these two are different per API User
+id <- "&app_id=SOME_NUMBERS_AND_LETTERS&"
+code <- "app_code=SOME_NUMBERS_AND_LETTERS&departure=2018-07-18T11:00:00-05:00"
+```
+
+And here's the function that pulls everything together. It contains the `here_mcoord_fix` function within to cut steps down.
+
+```{r}
+get_here_urls <- function(origin, destination){
+  xorigin <- here_mcoord_fix(origin)
+  xdestination <- here_mcoord_fix(destination)
+  z <- paste0(base_url,"?waypoint0=",xorigin, "&waypoint1=",
+              xdestination, xmode, id, code, sep="")
+  return(z) 
+}
+
+```
+
+So let me show the output:
+```{r}
+origin <- philly_300_points%>%
+  select(startLon, startLat)
+destination <- philly_300_points%>%
+  select(endLon, endLat)
+
+urls <- get_here_urls(origin, destination)
+
+#Let's take a peak at a random 1 of 89700 URLs we've created.
+urls[runif(1, 1,89700)]
+
+```
+
+
+
+
+##Running this Code without Emptying my Pockets {-}
+So, I decided not to use AWS anymore...maybe if I had deep pockets I would, but I had decided to find an alternative. The first thing I learned was that I did not[^1] really fully understand parallel computing. There were better functions than `mclapply` available. The second thing I realized that I was obsessed with doing the work on the cloud. On one hand, the cloud is definietly better. On the other hand, only if you've got that cash-money.
+
+The solution was to use the `DoParallel` package with computers that have multiple cores, thus performing parallel computations on each core.
+
+###Getting DoParallel Up and Running {-}
+```{r, eval = FALSE}
+#Setting up parallel with one less core than available on the computer. This is to avoid intense crashing.
+no_cores <- detectCores() - 1  
+cl <- makeCluster(no_cores)  
+registerDoParallel(cl)  
+
+#To see if that worked: if it returns 1 - then it didn't work
+getDoParWorkers()
+
+#To end the parallel cores
+registerDoSEQ()
+getDoParWorkers()
+
+```
+
+
+###Getting the functions ready to access the here API {-}
+The first step is getting it running before going parallel and seeing what the outputs look like.
+
+There are some messy looking results so I've tabbed this section to maintain readability. Feel free to look through it if you're interested. Each tab is a view of each output.
+
+#### Everything {-}
+The first step is getting it running before going parallel and seeing what the outputs look like:
+
+```{r eval = FALSE}
+
+#We'll use one random url to test
+url_test <- urls[runif(1, 1,89700)]
+require(httr)
+require(jsonlite)
+
+GET_url_test <- GET(url_test)
+content_url_test <-  content(GET_url_test, "text")
+json_url_test <-   fromJSON(content_url_test, flatten = TRUE)
+final_url_test <- as.data.frame(json_url_test)
+
+```
+
+
+#### Step 1 {-}
+```{r}
+GET_url_test
+```
+There are a few good pieces of news in this code:
+
+  *The status is 200 meaning it worked[^1]
+  *The data is in JSON format
+  *The size is not absurd
+
+#### Step 2 {-}
+```{r eval = FALSE}
+content_url_test <-  content(GET_url_test, "text")
+```
+
+```{r echo = FALSE}
+content_url_test
+```
+
+#### Step 3 {-}
+
+```{r eval = FALSE}
+json_url_test <-   fromJSON(content_url_test, flatten = TRUE)
+
+```
+
+```{r echo = FALSE}
+json_url_test
+```
+
+#### step 4 {-}
+```{r eval = FALSE}
+ final_url_test <- as.data.frame(json_url_test)
+```
+
+
+```{r echo = FALSE}
+final_url_test
+
+```
+###
+
+###Preparing Looping Functions for Parallel {-}
+
+
+```{r eval = FALSE}
+#gets the Data from HERE API
+
+get_city = foreach(i=urls, .packages='httr') %dopar% {
+    GET(i)
+  }
+
+status_code(results[[1]]) #Can check some to ensure it worked
+
+#Gets the Json Content
+content_city = foreach(i=get_city, .packages='httr') %dopar% {
+  content(i, "text")
+}
+
+#munging
+#makes the json data semi pretty
+json_city = foreach(i=content_city, .packages='jsonlite') %dopar% {
+  fromJSON(i, flatten = TRUE)
+}
+
+df_city = foreach(i=json_city) %dopar% {
+    as.data.frame(i)
+  }
+
+
+full <- rbindlist(df_city, fill = TRUE)
+
+```
+
+###Plan of Attack {-}
+To solve my 2nd large issue, I decided to leverage the resources of my university. Generally, the idea is to split up the urls into multiple lists, then run each set of URLs independently on several computers.
+
+To split up the URLs:
+```{r}
+list_of_URLs <- split(urls, ceiling(seq_along(urls)/15000))
+str(list_of_URLs)
+
+```
+
+Then on each computer I would run the code, but first specify:
+```{r}
+urls<- list_of_URLs[[2]] #insert whatever subset you want to use
+str(urls)
+
+```
+
+This worked magically. I used several computers over 3 days and got all the data I need. The internet and books constantly preached that 80% of these tasks are data collection / wrangling and only 20% was the actual analysis. I think I finally understand what they mean...But now for the fun! The conclusions and results!!!
+
+*****
+[^7]: status codes starting 3xx or 4xx spell out trouble. Also, can use the httr function `status_code()` to get this piece of information easier.
+
+
+
+

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>A Question on the Efficiency of Transit   in Absurd Situations</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="A Question on the Efficiency of Transit   in Absurd Situations" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A Question on the Efficiency of Transit   in Absurd Situations" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Effi Feldblum">
+
+
+<meta name="date" content="2018-07-29">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="part-3-more-trips.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.1.17/leaflet-providers.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.1/leaflet-providers-plugin.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"Transit BBBAABBY</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Part 1: The Idea</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#plan-of-attack-1"><i class="fa fa-check"></i>Plan of Attack 1</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#packages"><i class="fa fa-check"></i>Packages</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#lets-get-started"><i class="fa fa-check"></i>Let’s Get Started</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#well-fuck"><i class="fa fa-check"></i>Well Fuck</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-2-shapefiles-and-progress.html"><a href="part-2-shapefiles-and-progress.html"><i class="fa fa-check"></i>Part 2: Shapefiles and Progress</a><ul>
+<li class="chapter" data-level="" data-path="part-2-shapefiles-and-progress.html"><a href="part-2-shapefiles-and-progress.html#getting-routes"><i class="fa fa-check"></i>Getting Routes</a></li>
+<li class="chapter" data-level="" data-path="part-2-shapefiles-and-progress.html"><a href="part-2-shapefiles-and-progress.html#our-first-good-data"><i class="fa fa-check"></i>Our first “good” data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-3-more-trips.html"><a href="part-3-more-trips.html"><i class="fa fa-check"></i>Part 3: More Trips</a><ul>
+<li class="chapter" data-level="" data-path="part-3-more-trips.html"><a href="part-3-more-trips.html#getting-the-routes-using-google-api"><i class="fa fa-check"></i>Getting the Routes using Google API</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html"><i class="fa fa-check"></i>Part 4: A Catastrophic Issue</a><ul>
+<li class="chapter" data-level="" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html#finding-a-replacement-for-google-routes-api"><i class="fa fa-check"></i>Finding a Replacement for Google Routes API</a><ul>
+<li class="chapter" data-level="" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html#functions"><i class="fa fa-check"></i>Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html#running-this-code-without-emptying-my-pockets"><i class="fa fa-check"></i>Running this Code without Emptying my Pockets</a><ul>
+<li class="chapter" data-level="" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html#getting-doparallel-up-and-running"><i class="fa fa-check"></i>Getting DoParallel Up and Running</a></li>
+<li class="chapter" data-level="" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html#getting-the-functions-ready-to-access-the-here-api"><i class="fa fa-check"></i>Getting the functions ready to access the here API</a></li>
+<li class="chapter" data-level="0.0.1" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html#section"><i class="fa fa-check"></i><b>0.0.1</b> </a></li>
+<li class="chapter" data-level="" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html#preparing-looping-functions-for-parallel"><i class="fa fa-check"></i>Preparing Looping Functions for Parallel</a></li>
+<li class="chapter" data-level="" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html#plan-of-attack"><i class="fa fa-check"></i>Plan of Attack</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html"><i class="fa fa-check"></i>Part 5: Results and Conclusion</a><ul>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#summary-of-results"><i class="fa fa-check"></i>Summary of Results</a></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#histograms"><i class="fa fa-check"></i>histograms</a></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#scatterplots"><i class="fa fa-check"></i>scatterplots</a><ul>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#percent-of-bad-trips"><i class="fa fa-check"></i>Percent of Bad Trips</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#the-bad-luck-trips"><i class="fa fa-check"></i>The “bad luck” trips</a></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#the-evil-ny-point"><i class="fa fa-check"></i>The EVIL NY POINT</a></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#philadelphia"><i class="fa fa-check"></i>Philadelphia</a><ul>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#sample-of-short-medium-and-long-trips"><i class="fa fa-check"></i>Sample of Short, Medium, and Long Trips</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#neighborhoods-individual"><i class="fa fa-check"></i>Neighborhoods individual</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Question on the Efficiency of Transit <br> in Absurd Situations</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="part-2-shapefiles-and-progress" class="section level1 unnumbered">
+<h1>Part 2: Shapefiles and Progress</h1>
+<p><img src="Septa_logo.png" width="50%" /></p>
+<p>The main lesson from part 1 is that I’m going to have to be a little less lazy in this project. The minitua is that I needed:</p>
+<ol style="list-style-type: decimal">
+<li>a way to graph only the city limits itself<br />
+</li>
+<li>a way to generate random points within that irregular polygon</li>
+</ol>
+<p>Googling told me that what I needed was a shapefile, “The shapefile format is a popular geospatial vector data format for geographic information system (GIS) software…The shapefile format can spatially describe vector features: points, lines, and polygons, representing, for example, water wells, rivers, and lakes.”<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a></p>
+<p>At first, it looked like this required me to download a bunch of files from the internet and load them all into R. At first because of the blessed package Tigris which allows users to download shapefiles from the US Census Bureau.</p>
+<p>The below code is using the TIGRIS package to grab the files for Philadelphia, New York City, and Washington D.C. <img src="bookdown-start_files/figure-html/unnamed-chunk-11-1.png" width="960" /> Okay great - we have our city polygons. ## Getting Random Points {-} To work with the shapefiles in R, the package <code>sp</code> was used. This package has a great function <code>spsample</code> which magically spits out the random numbers. At first, I still thought I’d have to figure out how to divide the cities into shapes I could find random points within then recombine.</p>
+<p>I thought a good starting point would be to get 300 points, 150 origin and 150 destination, and find the directions between them. I’ll show an example of that workflow using only Philadelphia.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">number_sample &lt;-<span class="st"> </span><span class="dv">150</span>  <span class="co">#This is the number of trips we want to test</span>
+city_file &lt;-<span class="st"> </span>philly <span class="co">#This is what city to get points for</span>
+
+origin &lt;-<span class="st"> </span><span class="kw">spsample</span>(city_file, <span class="dt">n =</span> number_sample, <span class="st">&quot;random&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">as.data.frame</span>()
+origin &lt;-<span class="st"> </span>origin <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(<span class="dt">startLat =</span> y , <span class="dt">startLon =</span> x) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">trip_id =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(origin))
+
+
+destination &lt;-<span class="st"> </span><span class="kw">spsample</span>(city_file, <span class="dt">n =</span> number_sample, <span class="st">&quot;random&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">as.data.frame</span>()
+destination &lt;-<span class="st"> </span>destination <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(<span class="dt">endLat =</span> y , <span class="dt">endLon =</span> x) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">trip_id =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(destination))
+
+<span class="co">#To combine the origins and destinations</span>
+trip &lt;-<span class="st"> </span><span class="kw">left_join</span>(origin,destination,<span class="dt">by =</span> <span class="st">&quot;trip_id&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(trip_id,startLat, startLon, endLat, endLon)</code></pre></div>
+<p><div id="htmlwidget-c3eda652ad1352a17fb6" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c3eda652ad1352a17fb6">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[39.8888886184453,39.9851528980073,40.0452725697241,40.0397394769424,39.9938807819883,39.9843598586156,40.0793263964812,39.9145992903888,39.9242431490505,40.0195768566845,40.0309204175817,39.9047067546511,40.0636205832276,39.9795897903788,39.9015850604817,40.0477349986362,40.0326382524279,40.0148329359919,40.0142785785279,40.0714092219582,40.0539684593374,39.9975552645292,39.9823483961614,40.0402836191852,39.9742407254035,39.9120799095236,39.9076705960043,40.0335976667211,40.1228157757186,40.010200319783,39.9883678239892,40.0301851205887,40.0086365435765,40.0294446721345,39.8849257191294,40.0334195579813,39.9764447382541,39.9534907467703,40.010634708337,40.0032660264725,39.9263376757323,40.0513713913942,40.1284430681165,40.0810354272735,40.0675468444977,40.022125502773,40.0826479538668,40.0411991614805,39.9009124994866,39.9165321341775,40.0685845905035,40.008212474034,39.9948751700257,39.9702511402227,39.995052228182,39.9893549636891,40.0419818046334,39.9342525345679,39.8781030513265,40.0056071543644,40.0201045922613,40.0561725697319,39.9428059830338,40.0431305453299,40.0730445057229,39.9875342425281,40.0883752872784,39.9182654738195,40.0034637326205,40.0257425094887,40.0187285203035,40.1111169137868,40.1245278457638,40.0400180040629,39.8884230170098,40.0510957717226,40.036383687928,40.0862303988442,39.9093776547209,40.0558028127813,39.9858046289837,39.9552269349943,39.9120947653945,39.98447846166,39.9634835025203,40.074718834329,40.1242997071478,40.1085664130411,40.0463167869348,39.9564013594288,40.0580309916362,40.1332113402475,40.0743326031385,40.0281999061878,39.9485703558972,40.0544380174172,40.0937221288734,40.0962925997887,40.0529269157482,40.02343172384,40.0012203112528,40.0015371439387,39.9257512123499,40.1355824477796,39.9596845852542,40.032382546835,39.872427727186,39.9386318102109,40.0577630685872,39.9947667551982,39.898800421545,39.9981123343545,40.0347634590336,39.990775760806,40.0141584653843,40.0943337560334,40.0006884346703,40.0963788242209,40.0553867058669,40.0805567362293,39.9457424469455,40.0135734676828,39.8872284227755,40.0871094743948,39.9820278365577,40.0774625794455,40.0510397600009,39.8893219753442,40.0286556377173,39.9818938950341,39.8952621028356,39.9416146974651,40.0468672214469,40.0114303692342,40.0432581206376,39.983098845884,40.0790313573273,40.1114656125066,39.8844761441535,40.0488485761164,39.9336582439577,40.0287744456288,39.9985903725619,40.0432354724932,40.0270677589163,39.9997902368747,39.9868567490722,39.8994518999549,39.985360837737,40.0545915094069],[-75.2340959673906,-75.1793083356869,-75.0479446291815,-75.0354650203634,-75.1822942042121,-75.2550212966547,-75.0077733086782,-75.2397448805054,-75.1377540124569,-75.099081658958,-75.2208324705394,-75.1742818772555,-75.1523131294735,-75.2465102836679,-75.2207982270901,-75.119254422258,-75.0572891233261,-75.125498989002,-75.0650446692169,-75.0890459859911,-75.226505506386,-75.2034565343659,-75.1632909328654,-75.2188840318005,-75.2188744006745,-75.225332771418,-75.172132569479,-75.1707102539912,-75.0235132143672,-75.1760481034148,-75.1759016341116,-75.0675632691304,-75.180635004566,-75.0473472580532,-75.1938998564826,-75.0335768617457,-75.2684071047178,-75.1721514344667,-75.1770949384954,-75.1246986435171,-75.2259524656517,-75.2011482095399,-75.0106947917669,-75.0842702290023,-75.0317949869429,-75.0977674579644,-75.052252244227,-75.1357887016246,-75.2441683624392,-75.1314718635216,-75.2099963407207,-75.1198644549173,-75.0639205299821,-75.2139622116126,-75.1038419245316,-75.2183689886546,-75.2030234210316,-75.1768064179235,-75.2456654493519,-75.1253614522503,-75.1502526759793,-75.1540194014526,-75.2274307699308,-75.0353684956633,-75.1786862947385,-75.1653165445963,-75.2207904020128,-75.1803881643985,-75.2006462998369,-75.1010041457213,-75.1856429474481,-74.987999419041,-75.0202738166308,-75.0252795404847,-75.2042576526196,-75.2155408915916,-75.177578726589,-75.0626507792115,-75.1315283536153,-75.2613333117287,-75.2483274691237,-75.2034520414573,-75.2125629456086,-75.2122749256591,-75.1657410468625,-74.9854887836024,-75.0280299025833,-74.9752302581845,-75.2382916219287,-75.1630390829983,-75.0822903634008,-75.0071914415071,-74.9977907321351,-75.1026569105637,-75.2010028041916,-75.2128445043105,-74.9979155148018,-74.9675752975054,-75.1455273697315,-75.0359976359905,-75.180858974011,-75.0711860490389,-75.2386061240935,-75.0111550615626,-75.1627547187408,-75.1214320952126,-75.2155197099597,-75.1622518614365,-75.0752372199905,-75.1933775680626,-75.233511564468,-75.0667104613485,-75.1616612824835,-75.1690154909632,-75.0766042012889,-75.016099650248,-75.1481980768812,-75.05470528036,-75.0245769809269,-75.2316131986988,-75.1463656924051,-75.1058921245596,-75.233204892896,-75.0386564719821,-75.1172782826894,-74.9789608016377,-75.035115829206,-75.2355544126904,-75.1998486734737,-75.1216921775455,-75.139129134045,-75.2288657278344,-75.1846419964588,-75.0646350583897,-75.1125737764489,-75.2371998045721,-74.9720440118753,-74.9995269822998,-75.2297357335752,-75.0399599107272,-75.1381421767592,-75.1160282734112,-75.0726164341731,-75.0071717037168,-75.2277128747387,-75.1588025042782,-75.1136284331314,-75.2160512778762,-75.2023630146967,-75.1320383779951],[39.9526025007772,40.09394741651,40.0915287414201,40.0461244921965,40.0291235612127,40.0180572608809,39.9063367307331,40.0291078403819,40.0312674917491,39.9321890626533,40.1020346287485,39.9854000192407,39.8936270964966,39.8833275702783,39.8784890586585,40.0742239705725,40.0198785119078,40.0700166375884,40.0909216984403,39.9166818844853,40.1219826459497,40.0661306974315,39.9459143738308,39.9119874665791,40.0469863172578,39.9973366622396,40.0883681815341,40.0166555198861,39.9631652471839,39.9594316793451,40.0079052092217,39.9124006596721,40.0362905377594,39.9368438497612,39.9171859825358,40.0973835765714,39.9295679887761,40.1178649911804,39.9093625104459,39.8845001191081,39.9499875260377,40.0728634937616,40.0533672128319,39.9995559276351,39.9870551308972,40.0306491184823,39.8890325801026,40.0477287388603,40.0300025088711,39.9025026425531,40.0261799152757,40.0592172559703,39.9971895748271,40.0916469529642,39.9187032994361,40.0482009847577,39.9425078385041,40.0427871459644,39.9934102824784,39.8812009281508,40.0532571801401,40.0721381425771,39.9904250696941,40.0396948307143,39.972692609962,40.1123847649953,40.038724569752,39.9858519251097,40.0683086734685,40.0316224328937,39.8715379698318,40.0179185582606,40.0652347840285,40.032708496207,39.9943726660529,40.0458309514063,39.9518760863274,40.0225231766846,39.8815702711396,39.8822492649783,39.9907985784848,40.0375123746658,39.8845454331264,39.9638583564817,40.0811195844208,40.0487883029418,39.9992244259006,40.058088368214,40.095721066476,40.0436058643619,40.0156540861702,39.9145344847083,40.0181619723878,40.0467981300853,40.0542316975708,39.9166121600354,40.0782349775966,40.0161340394162,40.0952434300532,39.8973720281255,39.8699113496731,40.0011878193234,39.9212821329974,40.0649379635329,40.0258603274505,40.0222239461126,40.0591252401744,40.0090283890881,39.900274997413,39.9185531709409,39.9885516091979,40.0032225772066,40.0289102500751,40.0327116180504,39.9619640730333,39.9919455124758,40.1299233612753,39.9401257033484,40.0651439113121,39.8902061080299,39.9858514493155,39.9860103033122,40.0385476775968,40.0546223006923,39.9810181102304,40.060048214664,40.0336786306021,40.0312999083439,39.911480800464,40.0526781533055,40.0982447440007,39.9974538575237,39.8846299157141,39.9378815512224,40.0742828322012,39.9935440017207,40.1092426021483,39.9171812714729,40.0545722303725,40.0184586757172,40.0081155903858,40.021257643435,39.9820727132063,40.065432927357,39.9868477954217,40.0149379716774,40.0676334958261,40.0456849480802,40.0210876788457,39.9891649982665],[-75.1997524856699,-74.9980128300259,-75.0090744952269,-75.0268731732527,-75.0632810565545,-75.0739263467079,-75.140805200118,-75.0501776854357,-75.1134724186075,-75.2393665253348,-74.9818492830868,-75.1437450119104,-75.2404288743459,-75.2005155765667,-75.1981273095347,-74.9720074870657,-75.1237852685835,-75.1924440692565,-75.0294732157284,-75.1515207789119,-75.0057994436701,-75.2457471555229,-75.2085309859853,-75.2443397065411,-75.0183677889058,-75.0613404222666,-75.0622918621075,-75.1442176976858,-75.14310691153,-75.2402184164171,-75.1158093429809,-75.1814393193686,-75.1553725906264,-75.1918605999577,-75.2405782212078,-75.0192424776497,-75.2372806923395,-74.9926797850966,-75.1698693612644,-75.2004247059684,-75.1841286667321,-75.1937275178602,-75.2428799291444,-75.1561453886567,-75.0649886099335,-75.1421423328063,-75.2534893258195,-75.034899959478,-75.0628603004187,-75.1721642919099,-75.0413522823311,-75.0728782668711,-75.0839737438799,-74.9669250763357,-75.1947073889136,-75.1737957611846,-75.1898494827793,-75.211063626597,-75.2405370279016,-75.2259741136043,-75.1558363889563,-75.0459804975998,-75.1863855249903,-75.1968178576541,-75.1563305852511,-74.9987387805727,-75.035011370026,-75.0715110282349,-74.9852619621359,-75.0666035919126,-75.2079168604016,-75.0502126974983,-75.2063485101987,-75.0830738123126,-75.1522515963608,-75.2450322327977,-75.2266521276287,-75.1784706367135,-75.1907313959443,-75.2092764796947,-75.2470628876987,-75.1222435393134,-75.2338061092063,-75.179699807905,-75.1764727780202,-75.0188463874052,-75.1659248027131,-75.1708736756263,-74.9599304888232,-75.109996182423,-75.1292055292502,-75.1364112855058,-75.1775939859771,-75.228860843706,-75.0726526121132,-75.1387795309658,-75.0741159141153,-75.1313233989065,-75.0649008549654,-75.2337857923684,-75.2104312485438,-75.0682310632346,-75.2222466443776,-75.1657392651424,-75.2137789668865,-75.2045712368759,-75.0452387838692,-75.176554928299,-75.1870201907504,-75.2437678700268,-75.1482145026757,-75.1897539222269,-75.0457883800101,-75.1333497030165,-75.2277288568031,-75.1747619228452,-75.0223492678687,-75.2010289659058,-75.0007727387808,-75.2306145311098,-75.1085713233261,-75.1102996448286,-75.0286260879633,-74.9989264251246,-75.0881851062206,-75.1893449650194,-75.0702783235982,-75.1483644121901,-75.1837655112618,-75.154420689149,-75.025372677937,-75.2182447909288,-75.252477488295,-75.1375233943141,-75.0688799684761,-75.1591404659597,-75.0182427731543,-75.1519642789902,-75.1570764526518,-75.1888968410215,-75.2028846027288,-75.0238013262663,-75.1565823796614,-75.2068182504164,-75.1827101568359,-75.1038689876079,-74.9793223814243,-74.9884933284564,-75.0661058687457,-75.0989830108059]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>start latitude<\/th>\n      <th>start longitude<\/th>\n      <th>end latitude<\/th>\n      <th>end longitude<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script> <br></p>
+<p><img src="bookdown-start_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>Now if we want to view the “routes” themselves if the one went as the bird flew.</p>
+<p><img src="bookdown-start_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div id="getting-routes" class="section level2 unnumbered">
+<h2>Getting Routes</h2>
+<p>So now we have this shit. great package google way // attaches to google api</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">googleway_raw_data &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(trip), <span class="cf">function</span>(x){
+  
+  <span class="kw">google_distance</span>(<span class="dt">origin =</span> (locations[x, <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>]),
+                  <span class="dt">destination =</span> (locations[x, <span class="dv">4</span><span class="op">:</span><span class="dv">5</span>]),
+                  <span class="dt">key =</span> key,
+                  <span class="dt">mode =</span> <span class="st">&quot;transit&quot;</span>)
+  
+})</code></pre></div>
+<p>This results in a list of lists where each holds the data of 1 trip.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">googleway_raw_data[[<span class="dv">5</span>]] <span class="co">#looking at the fifth list, which is also the fifth set of coordinates</span></code></pre></div>
+<pre><code>## $destination_addresses
+## [1] &quot;I-95, Philadelphia, PA 19153, USA&quot;
+## 
+## $origin_addresses
+## [1] &quot;4027 Conshohocken Ave, Philadelphia, PA 19131, USA&quot;
+## 
+## $rows
+##                                   elements
+## 1 24.1 km, 24149, 1 hour 22 mins, 4930, OK
+## 
+## $status
+## [1] &quot;OK&quot;</code></pre>
+<p>So, some serious data munging is needed… <em>cue the montage music</em></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">foo &lt;-<span class="st"> </span><span class="kw">do.call</span>(<span class="dt">what =</span> <span class="st">&quot;rbind&quot;</span>,
+               <span class="dt">args =</span> <span class="kw">lapply</span>(googleway_raw_data, as.data.frame))
+
+foo &lt;-<span class="st">  </span><span class="kw">separate</span>(foo, elements, <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&quot;km&quot;</span>, <span class="st">&quot;value&quot;</span>, <span class="st">&quot;duration&quot;</span>, 
+                    <span class="st">&quot;value2&quot;</span>, <span class="st">&quot;currency&quot;</span>, <span class="st">&quot;cost&quot;</span>, <span class="st">&quot;uk&quot;</span>, <span class="st">&quot;status2&quot;</span>), <span class="st">&quot;,&quot;</span>)
+
+
+foo &lt;-<span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(foo, destination_addresses, origin_addresses, km, duration, cost, status)
+<span class="kw">head</span>(foo)</code></pre></div>
+<pre><code>##                                  destination_addresses
+## 1 1551 Franklin Mills Cir, Philadelphia, PA 19154, USA
+## 2             41 N 6th St, Philadelphia, PA 19106, USA
+## 3          1836 Arthur St, Philadelphia, PA 19152, USA
+## 4        2124 W Oxford St, Philadelphia, PA 19121, USA
+## 5                    I-95, Philadelphia, PA 19153, USA
+## 6        2025 Windrim Ave, Philadelphia, PA 19144, USA
+##                                     origin_addresses
+## 1        3222 S 13th St, Philadelphia, PA 19148, USA
+## 2        1914 Reilly Rd, Philadelphia, PA 19115, USA
+## 3    11209 Waldemire Dr, Philadelphia, PA 19154, USA
+## 4     1562 Pattison Ave, Philadelphia, PA 19145, USA
+## 5 4027 Conshohocken Ave, Philadelphia, PA 19131, USA
+## 6  117 Spring Garden St, Philadelphia, PA 19123, USA
+##                                      km
+## 1 list(distance = list(text = &quot;36.0 km&quot;
+## 2 list(distance = list(text = &quot;21.3 km&quot;
+## 3  list(distance = list(text = &quot;9.5 km&quot;
+## 4  list(distance = list(text = &quot;9.4 km&quot;
+## 5 list(distance = list(text = &quot;24.1 km&quot;
+## 6 list(distance = list(text = &quot;11.2 km&quot;
+##                                   duration            cost status
+## 1  duration = list(text = &quot;1 hour 47 mins&quot;  text = &quot;$4.50&quot;     OK
+## 2         duration = list(text = &quot;58 mins&quot;  text = &quot;$3.50&quot;     OK
+## 3         duration = list(text = &quot;42 mins&quot;  text = &quot;$2.50&quot;     OK
+## 4         duration = list(text = &quot;43 mins&quot;  text = &quot;$3.50&quot;     OK
+## 5  duration = list(text = &quot;1 hour 22 mins&quot;            &lt;NA&gt;     OK
+## 6         duration = list(text = &quot;23 mins&quot;            &lt;NA&gt;     OK</code></pre>
+<p>Now to get rid of all that annoying fluff<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##source of numextract function: http://stla.github.io/stlapblog/posts/Numextract.html
+numextract &lt;-<span class="st"> </span><span class="cf">function</span>(string){ 
+  <span class="kw">str_extract</span>(string, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">-*</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&quot;</span>)
+} 
+
+foo<span class="op">$</span>km &lt;-<span class="st"> </span><span class="kw">lapply</span>(foo<span class="op">$</span>km, numextract)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">as.numeric</span>()
+foo<span class="op">$</span>cost &lt;-<span class="st"> </span><span class="kw">substring</span>(foo<span class="op">$</span>cost, <span class="dv">11</span>)
+foo<span class="op">$</span>cost &lt;-<span class="st"> </span><span class="kw">substr</span>(foo<span class="op">$</span>cost,<span class="dv">1</span>,<span class="kw">nchar</span>(foo<span class="op">$</span>cost)<span class="op">-</span><span class="dv">1</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">as.numeric</span>()
+foo<span class="op">$</span>duration &lt;-<span class="st"> </span><span class="kw">substring</span>(foo<span class="op">$</span>duration, <span class="dv">26</span>)
+foo<span class="op">$</span>duration &lt;-<span class="st"> </span><span class="kw">substr</span>(foo<span class="op">$</span>duration,<span class="dv">1</span>,<span class="kw">nchar</span>(foo<span class="op">$</span>duration)<span class="op">-</span><span class="dv">1</span>)
+
+
+<span class="co">#Splitting up duration from XX hour(s) XX minute(s), to seperate columns</span>
+
+foo1 &lt;-<span class="st"> </span><span class="kw">separate</span>(foo, duration, <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&quot;hours&quot;</span>, <span class="st">&quot;minutes&quot;</span>), <span class="dt">sep =</span> <span class="op">-</span><span class="dv">7</span>)
+foo1<span class="op">$</span>hours &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;[^0-9]&quot;</span>, <span class="st">&quot;&quot;</span>, foo1<span class="op">$</span>hours)
+foo1<span class="op">$</span>minutes &lt;-<span class="st"> </span><span class="kw">gsub</span>(<span class="st">&quot;[^0-9]&quot;</span>, <span class="st">&quot;&quot;</span>,foo1<span class="op">$</span>minutes)
+foo1<span class="op">$</span>hours &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(foo1<span class="op">$</span>hours)
+foo1<span class="op">$</span>minutes &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(foo1<span class="op">$</span>minutes)
+
+<span class="co">#for trips that take less than an hour</span>
+<span class="co">#doesnt murk with invalid trips because of other apparent NAS</span>
+foo1<span class="op">$</span>hours[<span class="kw">is.na</span>(foo1<span class="op">$</span>hours)] &lt;-<span class="st"> </span><span class="dv">0</span>
+
+<span class="co">#creating a total minutes section</span>
+foo1 &lt;-<span class="st"> </span>foo1 <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">duration_minutes =</span> (hours<span class="op">*</span><span class="dv">60</span>)<span class="op">+</span>minutes)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">trip_id =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(foo1))
+
+<span class="co">#merging with trip to have coordinates</span>
+full_AB_GOOGLE &lt;-<span class="st"> </span><span class="kw">left_join</span>(foo1, trip,<span class="dt">by =</span> <span class="st">&quot;trip_id&quot;</span>)</code></pre></div>
+<div id="htmlwidget-0fc87f94fe0755de311f" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0fc87f94fe0755de311f">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],["3222 S 13th St, Philadelphia, PA 19148, USA","1914 Reilly Rd, Philadelphia, PA 19115, USA","11209 Waldemire Dr, Philadelphia, PA 19154, USA","1562 Pattison Ave, Philadelphia, PA 19145, USA","4027 Conshohocken Ave, Philadelphia, PA 19131, USA","117 Spring Garden St, Philadelphia, PA 19123, USA","5991 Lincoln Dr, Philadelphia, PA 19144, USA","4100 Aramingo Ave, Philadelphia, PA 19124, USA","4609 Horrocks St, Philadelphia, PA 19124, USA","3701 Island Ave, Philadelphia, PA 19153, USA","710 Stelwood Dr, Philadelphia, PA 19115, USA","5311 Pulaski Ave, Philadelphia, PA 19144, USA","2116 Ridge Ave, Philadelphia, PA 19121, USA","39.9313397681852,-75.2278805184204","Eastwick, Philadelphia, PA, USA","39.8757691751161,-75.208514995761","1713 W Erie Ave, Philadelphia, PA 19140, USA","Schuylkill Expy, Philadelphia, PA 19148, USA","Port Richmond, Philadelphia, PA, USA","3298 Red Lion Rd, Philadelphia, PA 19114, USA","Northeast Philadelphia, Philadelphia, PA, USA","40.0060901857294,-75.0806988886131","9559 Academy Rd, Philadelphia, PA 19114, USA","7000 Crittenden St, Philadelphia, PA 19119, USA","6461 Marsden St, Philadelphia, PA 19135, USA","506 Parkhollow Ln, Philadelphia, PA 19111, USA","1928 Green St, Philadelphia, PA 19130, USA","7453 Henry Ave, Philadelphia, PA 19128, USA","Plaza Dr, Philadelphia, PA 19154, USA","133 Federal St, Philadelphia, PA 19147, USA","460 Kingsley St, Philadelphia, PA 19128, USA","4011 Lyman Dr, Philadelphia, PA 19114, USA","8471 Hegerman St, Philadelphia, PA 19136, USA","1650 S 51st St, Philadelphia, PA 19143, USA","South Philadelphia West, Philadelphia, PA, USA","White Trail, Philadelphia, PA 19118, USA","4075 Benner St, Philadelphia, PA 19135, USA","811 S Chris Columbus Blvd, Philadelphia, PA 19147, USA","9226 Ashton Rd, Philadelphia, PA 19114, USA","1675 State Rte 3005, Philadelphia, PA 19131, USA","429 W Ruscomb St, Philadelphia, PA 19120, USA","2108 N 6th St, Philadelphia, PA 19122, USA","Philadelphia, PA, USA","9231 Grace Ln, Philadelphia, PA 19115, USA","222 W Erie Ave, Philadelphia, PA 19140, USA","895 Kitty Hawk Ave, Philadelphia, PA 19112, USA","730 Strahle St, Philadelphia, PA 19111, USA","4907 Schuyler St, Philadelphia, PA 19144, USA","3001 Red Lion Rd, Philadelphia, PA 19114, USA","Pennypack Trail, Philadelphia, PA 19115, USA","1 Sweetbriar Ln, Philadelphia, PA 19131, USA","1231 Pattison Ave, Philadelphia, PA 19148, USA","1515 N 59th St, Philadelphia, PA 19151, USA","228 Lardner St, Philadelphia, PA 19111, USA","Philadelphia, PA, USA","1106 S Wilton St, Philadelphia, PA 19143, USA","423 Lemonte St, Philadelphia, PA 19128, USA","3888 Glendale St, Philadelphia, PA 19124, USA","Philadelphia, PA, USA","9802 Haldeman Ave, Philadelphia, PA 19115, USA","158 W Nedro Ave, Philadelphia, PA 19120, USA","400 Port Royal Ave, Philadelphia, PA 19128, USA","3437 W School House Ln, Philadelphia, PA 19129, USA","13512 Bustleton Ave, Philadelphia, PA 19116, USA","340 E Courtland St, Philadelphia, PA 19120, USA","2306 S 12th St, Philadelphia, PA 19148, USA","211 Spring Ln, Philadelphia, PA 19128, USA","301 N 20th St, Philadelphia, PA 19103, USA","4401 W Thompson St, Philadelphia, PA, USA","2504 S Sheridan St, Philadelphia, PA 19148, USA","541 E Godfrey Ave, Philadelphia, PA 19120, USA","9640 Evans St, Philadelphia, PA 19115, USA","Pennypack Trail, Philadelphia, PA 19136, USA","I-95 &amp; Delaware Expy, Philadelphia, PA 19153, USA","13071 Cardella Pl, Philadelphia, PA 19116, USA","6247 Old York Rd, Philadelphia, PA 19141, USA","3033 S 63rd St, Philadelphia, PA 19143, USA","700 S 17th St, Philadelphia, PA 19103, USA","6250 Loretto Ave, Philadelphia, PA 19111, USA","4030 Ashland St, Philadelphia, PA 19124, USA","1300 S Cleveland St, Philadelphia, PA 19146, USA","8574 Ditman St, Philadelphia, PA 19136, USA","6799 Callowhill St, Philadelphia, PA 19151, USA","6408 Edmund St, Philadelphia, PA 19135, USA","5749 Leonard St, Philadelphia, PA 19149, USA","1101 Southampton Rd, Philadelphia, PA 19116, USA","Fox Chase/ Burholme, Philadelphia, PA 19111, USA","3113 Maureen Dr, Philadelphia, PA 19154, USA","9500 James St, Philadelphia, PA 19114, USA","4401 S Broad St, Philadelphia, PA 19112, USA","11500 Norcom Rd, Philadelphia, PA 19154, USA","Pier 70 Blvd, Philadelphia, PA 19148, USA","Eastwick, Philadelphia, PA, USA","1144 Jackson St, Philadelphia, PA 19148, USA","6901R Norwitch Dr, Philadelphia, PA 19153, USA","2418 N 50th St, Philadelphia, PA 19131, USA","3117 W Coulter St, Philadelphia, PA 19129, USA","9 Schuylkill River Trail, Philadelphia, PA 19130, USA","94 N 46th St, Philadelphia, PA 19139, USA","889 W Walnut Ln, Philadelphia, PA 19144, USA","3966 Grant Ave, Philadelphia, PA 19114, USA","S Front St &amp; I-95, Philadelphia, PA 19148, USA","Academy Rd, Philadelphia, PA 19114, USA","7974 Fayette St, Philadelphia, PA 19150, USA","33 E Chelten Ave, Philadelphia, PA 19144, USA","210 N 53rd St, Philadelphia, PA 19139, USA","1529 S 8th St, Philadelphia, PA 19148, USA","40.0270569121211,-75.0641539228544","Philadelphia, PA, USA","10089 Sandmeyer Ln, Philadelphia, PA 19116, USA","Southwest Philadelphia, Philadelphia, PA, USA","2901-41 Fox St, Philadelphia, PA 19129, USA","Philadelphia, PA, USA","3908 N Darien St, Philadelphia, PA 19140, USA","2101 W Shunk St, Philadelphia, PA 19145, USA","9855 Clark St, Philadelphia, PA 19115, USA","1609 Merribrook Rd, Philadelphia, PA 19151, USA","12722 Verda Dr, Philadelphia, PA 19154, USA","3305 Frankford Ave, Philadelphia, PA 19134, USA","4401 Megargee St, Philadelphia, PA 19136, USA","5300 Comly St, Philadelphia, PA 19135, USA","3831 N Park Ave, Philadelphia, PA 19140, USA","40.0760252349624,-75.2244328483884","2900 Grant Ave, Philadelphia, PA 19114, USA","6046 Passyunk Ave, Philadelphia, PA 19153, USA","14008 Hornig Rd, Philadelphia, PA 19116, USA","3 Moredun Pl, Philadelphia, PA 19115, USA","200 Slocum St, Philadelphia, PA 19119, USA","39.8831966503412,-75.2609193457282","724 Borbeck Ave, Philadelphia, PA 19111, USA","6267 Ditman St, Philadelphia, PA 19135, USA","6920 Garman St, Philadelphia, PA 19142, USA","3704 Bandon Dr, Philadelphia, PA 19154, USA","3700 Morris St, Philadelphia, PA 19145, USA","39.9745737061317,-75.1115287768075","9002 Crefeld St, Philadelphia, PA 19118, USA","30 Schuylkill River Trail, Philadelphia, PA 19131, USA","1316 PA-611, Philadelphia, PA 19146, USA","40.0579015123315,-75.2179240951294","Baxter Trail, Philadelphia, PA 19136, USA","5800 Magnolia St, Philadelphia, PA 19144, USA","1137 Friendship St, Philadelphia, PA 19111, USA","White Trail, Philadelphia, PA 19118, USA","Yellow Trail, Philadelphia, PA 19128, USA","9537 Northeast Ave, Philadelphia, PA 19115, USA","6744 Chester Ave, Philadelphia, PA 19142, USA","3310 N 9th St, Philadelphia, PA 19140, USA","6013 Cedar Ave, Philadelphia, PA 19143, USA","915 Faunce St, Philadelphia, PA 19111, USA","6112 Newtown Ave, Philadelphia, PA 19111, USA"],["1551 Franklin Mills Cir, Philadelphia, PA 19154, USA","41 N 6th St, Philadelphia, PA 19106, USA","1836 Arthur St, Philadelphia, PA 19152, USA","2124 W Oxford St, Philadelphia, PA 19121, USA","I-95, Philadelphia, PA 19153, USA","2025 Windrim Ave, Philadelphia, PA 19144, USA","124 N Lindenwood St, Philadelphia, PA 19139, USA","5456 Lebanon Ave, Philadelphia, PA 19131, USA","264 W Sedgley Ave, Philadelphia, PA 19140, USA","2010 Murray St, Philadelphia, PA 19115, USA","5949 Horrocks St, Philadelphia, PA 19149, USA","3876 Archer St, Philadelphia, PA 19140, USA","4128 Knorr St, Philadelphia, PA 19135, USA","39.8766066965645,-75.2072254978314","655 St Georges Rd, Philadelphia, PA 19119, USA","40.0342628692791,-75.0953250520866","3577 Indian Queen Ln, Philadelphia, PA 19129, USA","Eastwick, Philadelphia, PA, USA","700 N 35th St, Philadelphia, PA 19104, USA","5901 Tabor Ave, Philadelphia, PA 19120, USA","Overbrook, Philadelphia, PA, USA","39.9450039564339,-75.1989484000234","7000 Lindbergh Blvd, Philadelphia, PA 19153, USA","1 Erdenheim St, Philadelphia, PA 19118, USA","2401 Roberts Ave, Philadelphia, PA 19144, USA","4690 I St, Philadelphia, PA 19124, USA","West Philadelphia Regional Center, Philadelphia, PA 19139, USA","2901 Red Lion Rd, Philadelphia, PA 19114, USA","9951 Academy Rd, Philadelphia, PA 19114, USA","9749 Cowden St, Philadelphia, PA 19115, USA","6500 Tabor Ave, Philadelphia, PA 19111, USA","6215 N Gratz St, Philadelphia, PA 19141, USA","9550 Frankford Ave, Philadelphia, PA 19114, USA","4030 Boone St, Philadelphia, PA 19127, USA","9002 Crefeld St, Philadelphia, PA 19118, USA","701 Market St, Philadelphia, PA 19106, USA","7327 Shisler St, Philadelphia, PA 19111, USA","6109 Ridge Ave, Philadelphia, PA 19128, USA","3101 Walnut St, Philadelphia, PA 19104, USA","6604 Roosevelt Blvd, Philadelphia, PA 19149, USA","562 Remsen Rd, Philadelphia, PA 19115, USA","211 Wilder St, Philadelphia, PA 19147, USA","1857 St Vincent St, Philadelphia, PA 19149, USA","5201 Locust St, Philadelphia, PA 19139, USA","2236 S Bancroft St, Philadelphia, PA 19145, USA","3981 Conshohocken Ave, Philadelphia, PA 19131, USA","Philadelphia, PA, USA","2101 Pennsylvania Ave, Philadelphia, PA 19130, USA","3509 N Delaware Ave, Philadelphia, PA 19134, USA","4743 Hartel Ave, Philadelphia, PA 19136, USA","1525 W Cayuga St, Philadelphia, PA 19140, USA","415 N 2nd St, Philadelphia, PA 19123, USA","1205 E Cliveden St, Philadelphia, PA 19119, USA","9322 Academy Rd, Philadelphia, PA 19114, USA","767 S Mole St, Philadelphia, PA 19146, USA","802 N Camac St, Philadelphia, PA 19123, USA","850 N 4th St, Philadelphia, PA 19123, USA","881 N Woodstock St, Philadelphia, PA 19130, USA","8401 Madison Pl, Philadelphia, PA 19153, USA","4200 Roosevelt Blvd, Philadelphia, PA 19124, USA","Pennypack Trail, Philadelphia, PA 19136, USA","1800 Wallace St, Philadelphia, PA 19130, USA","Northeast Philadelphia, Philadelphia, PA, USA","5655 Malcolm St, Philadelphia, PA 19143, USA","242 Lockart Pl, Philadelphia, PA 19116, USA","3701 Henry Ave, Philadelphia, PA 19129, USA","8566 Forrest Ave, Philadelphia, PA 19150, USA","5534 Bloyd St, Philadelphia, PA 19138, USA","Woodhaven Rd &amp; Roosevelt Blvd, Philadelphia, PA 19116, USA","6727 Upland St, Philadelphia, PA 19142, USA","4548 Richmond St, Philadelphia, PA 19137, USA","5835 SR 1009, Philadelphia, PA 19149, USA","506 W Rittenhouse St, Philadelphia, PA 19144, USA","1312 McFerran St, Philadelphia, PA 19140, USA","South Philadelphia West, Philadelphia, PA, USA","Philadelphia, PA, USA","Port Richmond, Philadelphia, PA, USA","6474 Crittenden St, Philadelphia, PA 19119, USA","1322 N 58th St, Philadelphia, PA 19131, USA","1109 Loney St, Philadelphia, PA 19111, USA","5728 N 19th St, Philadelphia, PA 19141, USA","Conwell Ave, Philadelphia, PA 19115, USA","3356 Delaware Ave, Philadelphia, PA 19137, USA","5943 N Mascher St, Philadelphia, PA 19120, USA","3421 Warren St, Philadelphia, PA 19104, USA","2519 Shields St, Philadelphia, PA 19142, USA","6929 Crispin St, Philadelphia, PA 19149, USA","1054 S 10th St, Philadelphia, PA 19147, USA","Philadelphia, PA, USA","7148 Rodney St, Philadelphia, PA 19138, USA","5045 Nevada St, Philadelphia, PA 19131, USA","3331 River Fields Drive, Philadelphia, PA 08105, USA","3134 Longshore Ave, Philadelphia, PA 19149, USA","5724 Market St, Philadelphia, PA 19139, USA","300 Hellerman St, Philadelphia, PA 19111, USA","4401 N 17th St, Philadelphia, PA 19140, USA","2100 N 49th St, Philadelphia, PA 19131, USA","937 Afton St, Philadelphia, PA 19111, USA","7928 Ridge Ave, Philadelphia, PA 19128, USA","481 Devereaux Ave, Philadelphia, PA 19111, USA","5400 Tulip St, Philadelphia, PA 19124, USA","Philadelphia, PA, USA","2294 E Butler St, Philadelphia, PA 19137, USA","3401 N Broad St, Philadelphia, PA 19140, USA","3058 Comly Rd, Philadelphia, PA 19154, USA","10849 Lockart Rd, Philadelphia, PA 19116, USA","5068 Loretto Ave, Philadelphia, PA 19124, USA","39.9753104211062,-75.0927755723232","1022 Carpenter St, Philadelphia, PA 19147, USA","3516 Wessex Ln, Philadelphia, PA 19114, USA","Philadelphia, PA, USA","I-95 &amp; Delaware Expy, Philadelphia, PA 19137, USA","3594 Brookview Rd, Philadelphia, PA 19154, USA","Southwest Philadelphia, Philadelphia, PA, USA","6906 Essington Ave, Philadelphia, PA 19153, USA","Schuylkill Expy &amp; I-76, Philadelphia, PA 19145, USA","Philadelphia, PA, USA","4130 Carbon St, Philadelphia, PA 19137, USA","Cobbs Creek, Philadelphia, PA, USA","8850 Towanda St, Philadelphia, PA 19118, USA","7529 Beverly Rd, Philadelphia, PA 19138, USA","5671 Matthews St, Philadelphia, PA 19138, USA","39.8793776405026,-75.2207531311806","1913 Fairmount Ave, Philadelphia, PA 19130, USA","8500 Essington Ave, Philadelphia, PA 19153, USA","1852 Pattison Ave, Philadelphia, PA 19145, USA","3243 State Rte 4009, Philadelphia, PA 19129, USA","5001 Grant Ave, Philadelphia, PA 19114, USA","39.8866911892336,-75.1511739787441","Northwest Philadelphia, Philadelphia, PA, USA","2035 Mt Vernon St, Philadelphia, PA 19130, USA","7245 Valley Ave, Philadelphia, PA 19128, USA","6613 N 21st St, Philadelphia, PA 19138, USA","389 1/2 E Cliveden St, Philadelphia, PA 19119, USA","39.9045782606902,-75.1440520518849","14508 Roosevelt Blvd, Philadelphia, PA 19154, USA","9100 State Rd, Philadelphia, PA 19136, USA","711 Jackson St, Philadelphia, PA 19148, USA","39.8881876891756,-75.2070062499977","5020 Portico St, Philadelphia, PA 19144, USA","1201 N Hope St, Philadelphia, PA 19122, USA","2122 S 63rd St, Philadelphia, PA 19142, USA","253 W Erie Ave, Philadelphia, PA 19140, USA","6060 N American St, Philadelphia, PA 19120, USA","Philadelphia, PA, USA","915 Pattison Ave, Philadelphia, PA 19148, USA","148 S 33rd St, Philadelphia, PA 19104, USA","2101 S 29th St, Philadelphia, PA 19145, USA","1910 N 63rd St, Philadelphia, PA 19151, USA","5800 Charles St, Philadelphia, PA 19135, USA"],[107,58,42,43,82,23,78,79,32,112,31,16,59,null,138,null,24,53,74,53,116,null,86,28,50,70,19,95,15,84,64,66,14,81,95,62,33,56,35,81,59,34,61,90,25,133,116,45,66,50,46,39,71,44,25,48,65,68,104,48,73,63,87,67,92,44,58,51,110,36,55,22,81,80,82,95,98,58,80,58,46,74,91,56,37,96,32,103,76,79,107,50,150,40,104,58,42,102,64,62,33,58,62,41,83,67,70,null,14,54,152,58,143,147,52,124,137,65,67,131,88,36,null,49,39,99,72,80,null,100,66,111,90,83,null,128,108,7,null,91,47,91,70,92,135,50,59,46,88,40],[36,21.3,9.5,9.4,24.1,11.2,15.7,20.7,5.8,34.2,9.6,3.4,13.7,null,30.4,null,5.2,14,19.6,18.4,35.4,null,34.1,5.7,11.7,12.4,6.4,29.2,4.6,22.5,14,20.4,3.4,16.9,23.9,20.8,4,17.5,22.3,22.5,15.4,7.2,13,33.3,11.9,21.6,25.8,7.6,18.2,6.7,10.2,9.4,23.3,11.8,5.2,9.9,15.1,9.4,24.6,12.7,15.6,16.7,24.1,38.4,18.4,13.5,11.1,12.1,33.4,8.2,12.1,7.9,18.7,20.4,36.9,18.7,27,16,22.1,12.7,13.3,17.9,18.8,12,15.5,40.4,6.4,30.9,29.6,21.2,35,7.5,46.4,10.1,25.2,11.7,6.4,21.2,18.8,11.3,10.8,4.8,12.1,9.5,23.3,33.9,15.6,null,2,12.3,40.3,11.5,36.5,44.1,4.2,29.7,36.5,22,19.5,25.2,17.5,7,null,23.5,10.4,31.8,19,41.6,null,19.8,16.5,23.2,22.8,20,null,33.6,25.1,2.2,null,21.4,15.6,27.1,13.8,20.3,34.9,13.3,9.2,9.5,28.8,6.8],[4.5,3.5,2.5,3.5,null,null,4.5,3.5,3.5,null,2.5,2.5,4.5,null,null,null,2.5,2.5,4.5,2.5,4.5,null,7,2.5,3.5,3.5,3.5,4.5,2.5,4.5,3.5,4.5,2.5,4.5,3.5,null,3.5,4.5,3.5,4.5,4.5,2.5,3.5,3.5,3.5,7,4.5,2.5,3.5,2.5,3.5,2.5,null,null,3.5,4.5,3.5,3.5,null,3.5,3.5,3.5,3.5,null,4.5,null,3.5,3.5,4.5,2.5,3.5,2.5,3.5,null,null,4.5,4.5,3.5,4.5,3.5,2.5,3.5,3.5,3.5,2.5,null,2.5,4.5,null,4.5,4.5,2.5,7,2.5,4.5,3.5,3.5,4.5,3.5,4.5,null,null,3.5,2.5,4.5,null,3.5,null,2.5,3.5,null,3.5,8,4.5,null,7,null,3.5,3.5,4.5,3.5,3.5,null,4.5,null,4.5,3.5,null,null,3.5,4.5,4.5,4.5,4.5,null,4.5,4.5,3.5,null,4.5,null,4.5,null,4.5,7,2.5,3.5,2.5,4.5,2.5],[39.8889,39.9852,40.0453,40.0397,39.9939,39.9844,40.0793,39.9146,39.9242,40.0196,40.0309,39.9047,40.0636,39.9796,39.9016,40.0477,40.0326,40.0148,40.0143,40.0714,40.054,39.9976,39.9823,40.0403,39.9742,39.9121,39.9077,40.0336,40.1228,40.0102,39.9884,40.0302,40.0086,40.0294,39.8849,40.0334,39.9764,39.9535,40.0106,40.0033,39.9263,40.0514,40.1284,40.081,40.0675,40.0221,40.0826,40.0412,39.9009,39.9165,40.0686,40.0082,39.9949,39.9703,39.9951,39.9894,40.042,39.9343,39.8781,40.0056,40.0201,40.0562,39.9428,40.0431,40.073,39.9875,40.0884,39.9183,40.0035,40.0257,40.0187,40.1111,40.1245,40.04,39.8884,40.0511,40.0364,40.0862,39.9094,40.0558,39.9858,39.9552,39.9121,39.9845,39.9635,40.0747,40.1243,40.1086,40.0463,39.9564,40.058,40.1332,40.0743,40.0282,39.9486,40.0544,40.0937,40.0963,40.0529,40.0234,40.0012,40.0015,39.9258,40.1356,39.9597,40.0324,39.8724,39.9386,40.0578,39.9948,39.8988,39.9981,40.0348,39.9908,40.0142,40.0943,40.0007,40.0964,40.0554,40.0806,39.9457,40.0136,39.8872,40.0871,39.982,40.0775,40.051,39.8893,40.0287,39.9819,39.8953,39.9416,40.0469,40.0114,40.0433,39.9831,40.079,40.1115,39.8845,40.0488,39.9337,40.0288,39.9986,40.0432,40.0271,39.9998,39.9869,39.8995,39.9854,40.0546],[-75.2341,-75.1793,-75.0479,-75.0355,-75.1823,-75.255,-75.0078,-75.2397,-75.1378,-75.0991,-75.2208,-75.1743,-75.1523,-75.2465,-75.2208,-75.1193,-75.0573,-75.1255,-75.065,-75.089,-75.2265,-75.2035,-75.1633,-75.2189,-75.2189,-75.2253,-75.1721,-75.1707,-75.0235,-75.176,-75.1759,-75.0676,-75.1806,-75.0473,-75.1939,-75.0336,-75.2684,-75.1722,-75.1771,-75.1247,-75.226,-75.2011,-75.0107,-75.0843,-75.0318,-75.0978,-75.0523,-75.1358,-75.2442,-75.1315,-75.21,-75.1199,-75.0639,-75.214,-75.1038,-75.2184,-75.203,-75.1768,-75.2457,-75.1254,-75.1503,-75.154,-75.2274,-75.0354,-75.1787,-75.1653,-75.2208,-75.1804,-75.2006,-75.101,-75.1856,-74.988,-75.0203,-75.0253,-75.2043,-75.2155,-75.1776,-75.0627,-75.1315,-75.2613,-75.2483,-75.2035,-75.2126,-75.2123,-75.1657,-74.9855,-75.028,-74.9752,-75.2383,-75.163,-75.0823,-75.0072,-74.9978,-75.1027,-75.201,-75.2128,-74.9979,-74.9676,-75.1455,-75.036,-75.1809,-75.0712,-75.2386,-75.0112,-75.1628,-75.1214,-75.2155,-75.1623,-75.0752,-75.1934,-75.2335,-75.0667,-75.1617,-75.169,-75.0766,-75.0161,-75.1482,-75.0547,-75.0246,-75.2316,-75.1464,-75.1059,-75.2332,-75.0387,-75.1173,-74.979,-75.0351,-75.2356,-75.1998,-75.1217,-75.1391,-75.2289,-75.1846,-75.0646,-75.1126,-75.2372,-74.972,-74.9995,-75.2297,-75.04,-75.1381,-75.116,-75.0726,-75.0072,-75.2277,-75.1588,-75.1136,-75.2161,-75.2024,-75.132],[39.9526,40.0939,40.0915,40.0461,40.0291,40.0181,39.9063,40.0291,40.0313,39.9322,40.102,39.9854,39.8936,39.8833,39.8785,40.0742,40.0199,40.07,40.0909,39.9167,40.122,40.0661,39.9459,39.912,40.047,39.9973,40.0884,40.0167,39.9632,39.9594,40.0079,39.9124,40.0363,39.9368,39.9172,40.0974,39.9296,40.1179,39.9094,39.8845,39.95,40.0729,40.0534,39.9996,39.9871,40.0306,39.889,40.0477,40.03,39.9025,40.0262,40.0592,39.9972,40.0916,39.9187,40.0482,39.9425,40.0428,39.9934,39.8812,40.0533,40.0721,39.9904,40.0397,39.9727,40.1124,40.0387,39.9859,40.0683,40.0316,39.8715,40.0179,40.0652,40.0327,39.9944,40.0458,39.9519,40.0225,39.8816,39.8822,39.9908,40.0375,39.8845,39.9639,40.0811,40.0488,39.9992,40.0581,40.0957,40.0436,40.0157,39.9145,40.0182,40.0468,40.0542,39.9166,40.0782,40.0161,40.0952,39.8974,39.8699,40.0012,39.9213,40.0649,40.0259,40.0222,40.0591,40.009,39.9003,39.9186,39.9886,40.0032,40.0289,40.0327,39.962,39.9919,40.1299,39.9401,40.0651,39.8902,39.9859,39.986,40.0385,40.0546,39.981,40.06,40.0337,40.0313,39.9115,40.0527,40.0982,39.9975,39.8846,39.9379,40.0743,39.9935,40.1092,39.9172,40.0546,40.0185,40.0081,40.0213,39.9821,40.0654,39.9868,40.0149,40.0676,40.0457,40.0211,39.9892],[-75.1998,-74.998,-75.0091,-75.0269,-75.0633,-75.0739,-75.1408,-75.0502,-75.1135,-75.2394,-74.9818,-75.1437,-75.2404,-75.2005,-75.1981,-74.972,-75.1238,-75.1924,-75.0295,-75.1515,-75.0058,-75.2457,-75.2085,-75.2443,-75.0184,-75.0613,-75.0623,-75.1442,-75.1431,-75.2402,-75.1158,-75.1814,-75.1554,-75.1919,-75.2406,-75.0192,-75.2373,-74.9927,-75.1699,-75.2004,-75.1841,-75.1937,-75.2429,-75.1561,-75.065,-75.1421,-75.2535,-75.0349,-75.0629,-75.1722,-75.0414,-75.0729,-75.084,-74.9669,-75.1947,-75.1738,-75.1898,-75.2111,-75.2405,-75.226,-75.1558,-75.046,-75.1864,-75.1968,-75.1563,-74.9987,-75.035,-75.0715,-74.9853,-75.0666,-75.2079,-75.0502,-75.2063,-75.0831,-75.1523,-75.245,-75.2267,-75.1785,-75.1907,-75.2093,-75.2471,-75.1222,-75.2338,-75.1797,-75.1765,-75.0188,-75.1659,-75.1709,-74.9599,-75.11,-75.1292,-75.1364,-75.1776,-75.2289,-75.0727,-75.1388,-75.0741,-75.1313,-75.0649,-75.2338,-75.2104,-75.0682,-75.2222,-75.1657,-75.2138,-75.2046,-75.0452,-75.1766,-75.187,-75.2438,-75.1482,-75.1898,-75.0458,-75.1333,-75.2277,-75.1748,-75.0223,-75.201,-75.0008,-75.2306,-75.1086,-75.1103,-75.0286,-74.9989,-75.0882,-75.1893,-75.0703,-75.1484,-75.1838,-75.1544,-75.0254,-75.2182,-75.2525,-75.1375,-75.0689,-75.1591,-75.0182,-75.152,-75.1571,-75.1889,-75.2029,-75.0238,-75.1566,-75.2068,-75.1827,-75.1039,-74.9793,-74.9885,-75.0661,-75.099]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>origin_addresses<\/th>\n      <th>destination_addresses<\/th>\n      <th>duration_minutes<\/th>\n      <th>km<\/th>\n      <th>cost<\/th>\n      <th>startLat<\/th>\n      <th>startLon<\/th>\n      <th>endLat<\/th>\n      <th>endLon<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ltp","columnDefs":[{"className":"dt-right","targets":[3,4,5,6,7,8,9]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="our-first-good-data" class="section level2 unnumbered">
+<h2>Our first “good” data</h2>
+<p>Let’s take a quick peak at what the data tells us before moving on.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#selecting a few choice variables and adding miles</span>
+foo &lt;-<span class="st"> </span>full_AB_GOOGLE <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(trip_id, <span class="dt">kilometers =</span> km, <span class="dt">duration =</span> duration_minutes, cost)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">miles =</span> <span class="kw">round</span>(kilometers<span class="op">/</span><span class="fl">1.609344</span>, <span class="dt">digits =</span><span class="dv">1</span>))
+
+miles &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">c</span>(<span class="kw">summary</span>(foo<span class="op">$</span>miles)))
+duration &lt;-<span class="kw">as.data.frame</span>(<span class="kw">c</span>(<span class="kw">summary</span>(foo<span class="op">$</span>duration)))
+summary1 &lt;-<span class="st"> </span><span class="kw">cbind</span>(miles, duration)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">round</span>(<span class="dt">digits =</span><span class="dv">2</span>)
+<span class="kw">colnames</span>(summary1) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;miles&quot;</span>, <span class="st">&quot;durations&quot;</span>)
+
+
+summary1 <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">kable</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">kable_styling</span>(<span class="dt">bootstrap_options =</span> <span class="kw">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>), <span class="dt">full_width =</span> <span class="ot">FALSE</span>,
+                <span class="dt">position =</span> <span class="st">&quot;float_right&quot;</span>)</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">miles</th>
+<th align="right">durations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Min.</td>
+<td align="right">1.20</td>
+<td align="right">7.00</td>
+</tr>
+<tr class="even">
+<td>1st Qu.</td>
+<td align="right">6.75</td>
+<td align="right">46.25</td>
+</tr>
+<tr class="odd">
+<td>Median</td>
+<td align="right">10.70</td>
+<td align="right">65.50</td>
+</tr>
+<tr class="even">
+<td>Mean</td>
+<td align="right">11.44</td>
+<td align="right">69.53</td>
+</tr>
+<tr class="odd">
+<td>3rd Qu.</td>
+<td align="right">14.83</td>
+<td align="right">90.00</td>
+</tr>
+<tr class="even">
+<td>Max.</td>
+<td align="right">28.80</td>
+<td align="right">152.00</td>
+</tr>
+<tr class="odd">
+<td>NA’s</td>
+<td align="right">8.00</td>
+<td align="right">8.00</td>
+</tr>
+</tbody>
+</table>
+<p><img src="bookdown-start_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<hr />
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p><a href="https://en.wikipedia.org/wiki/Shapefile">Wikipedia ShapefileArticle</a><a href="part-2-shapefiles-and-progress.html#fnref4">↩</a></p></li>
+<li id="fn5"><p>I hope it’s clear enough from the code chunk, but I want to make it clear that the numextract function is not my own. I found it on: <a href="http://stla.github.io/stlapblog/posts/Numextract.html" class="uri">http://stla.github.io/stlapblog/posts/Numextract.html</a><a href="part-2-shapefiles-and-progress.html#fnref5">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="part-3-more-trips.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

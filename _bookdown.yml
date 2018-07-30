@@ -1,0 +1,5 @@
+book_filename: "bookdown-start"
+rmd_files: ["index.Rmd", "part2_draft.Rmd", "part3_draft.Rmd", "part4_draft.Rmd", "part5_draft.Rmd"]
+clean: [packages.bib, bookdown.bbl]
+new_session: no
+output_dir: "docs"

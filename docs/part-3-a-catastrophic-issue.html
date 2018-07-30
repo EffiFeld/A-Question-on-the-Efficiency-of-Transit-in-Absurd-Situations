@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>A Question on the Efficiency of Transit   in Absurd Situations</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="A Question on the Efficiency of Transit   in Absurd Situations" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A Question on the Efficiency of Transit   in Absurd Situations" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Effi Feldblum">
+
+
+<meta name="date" content="2018-07-28">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="part-3-more-trips-.html">
+<link rel="next" href="part-5-results-and-conclusion.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.1.17/leaflet-providers.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.1/leaflet-providers-plugin.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"Transit BBBAABBY</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Part 1: The Idea</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#plan-of-attack-1"><i class="fa fa-check"></i>Plan of Attack 1</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#packages"><i class="fa fa-check"></i>Packages</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#lets-get-started"><i class="fa fa-check"></i>Let’s Get Started</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#well-fuck"><i class="fa fa-check"></i>Well Fuck</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-2-shapefiles-and-progress.html"><a href="part-2-shapefiles-and-progress.html"><i class="fa fa-check"></i>Part 2: Shapefiles and Progress</a><ul>
+<li class="chapter" data-level="" data-path="part-2-shapefiles-and-progress.html"><a href="part-2-shapefiles-and-progress.html#getting-random-points"><i class="fa fa-check"></i>Getting Random Points</a></li>
+<li class="chapter" data-level="" data-path="part-2-shapefiles-and-progress.html"><a href="part-2-shapefiles-and-progress.html#getting-routes"><i class="fa fa-check"></i>Getting Routes</a></li>
+<li class="chapter" data-level="0.1" data-path="part-2-shapefiles-and-progress.html"><a href="part-2-shapefiles-and-progress.html#our-first-good-data"><i class="fa fa-check"></i><b>0.1</b> Our first “good” data</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="part-3-more-trips-.html"><a href="part-3-more-trips-.html"><i class="fa fa-check"></i><b>1</b> Part 3: More Trips {-</a><ul>
+<li class="chapter" data-level="" data-path="part-3-more-trips-.html"><a href="part-3-more-trips-.html#getting-the-routes-using-google-api"><i class="fa fa-check"></i>Getting the Routes using Google API</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-3-a-catastrophic-issue.html"><a href="part-3-a-catastrophic-issue.html"><i class="fa fa-check"></i>Part 3: A Catastrophic Issue</a><ul>
+<li class="chapter" data-level="" data-path="part-3-a-catastrophic-issue.html"><a href="part-3-a-catastrophic-issue.html#finding-a-replacement-for-google-routes-api"><i class="fa fa-check"></i>Finding a Replacement for Google Routes API</a><ul>
+<li class="chapter" data-level="" data-path="part-3-a-catastrophic-issue.html"><a href="part-3-a-catastrophic-issue.html#functions"><i class="fa fa-check"></i>Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-3-a-catastrophic-issue.html"><a href="part-3-a-catastrophic-issue.html#running-this-code-without-emptying-my-pockets"><i class="fa fa-check"></i>Running this Code without Emptying my Pockets</a><ul>
+<li class="chapter" data-level="" data-path="part-3-a-catastrophic-issue.html"><a href="part-3-a-catastrophic-issue.html#getting-doparallel-up-and-running"><i class="fa fa-check"></i>Getting DoParallel Up and Running</a></li>
+<li class="chapter" data-level="1.0.1" data-path="part-3-a-catastrophic-issue.html"><a href="part-3-a-catastrophic-issue.html#getting-the-functions-ready-to-access-the-here-api"><i class="fa fa-check"></i><b>1.0.1</b> Getting the functions ready to access the here API</a></li>
+<li class="chapter" data-level="1.0.2" data-path="part-3-a-catastrophic-issue.html"><a href="part-3-a-catastrophic-issue.html#section"><i class="fa fa-check"></i><b>1.0.2</b> </a></li>
+<li class="chapter" data-level="" data-path="part-3-a-catastrophic-issue.html"><a href="part-3-a-catastrophic-issue.html#preparing-looping-functions-for-parallel"><i class="fa fa-check"></i>Preparing Looping Functions for Parallel</a></li>
+<li class="chapter" data-level="" data-path="part-3-a-catastrophic-issue.html"><a href="part-3-a-catastrophic-issue.html#plan-of-attack"><i class="fa fa-check"></i>Plan of Attack</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html"><i class="fa fa-check"></i><b>2</b> Part 5: Results and Conclusion</a><ul>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#summary-of-results"><i class="fa fa-check"></i>Summary of Results</a></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#histograms"><i class="fa fa-check"></i>histograms</a></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#scatterplots"><i class="fa fa-check"></i>scatterplots</a><ul>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#percent-of-bad-trips"><i class="fa fa-check"></i>Percent of Bad Trips</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#the-bad-luck-trips"><i class="fa fa-check"></i>The “bad luck” trips</a></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#the-evil-ny-point"><i class="fa fa-check"></i>The EVIL NY POINT</a></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#philadelphia"><i class="fa fa-check"></i>Philadelphia</a><ul>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#sample-of-short-medium-and-long-trips"><i class="fa fa-check"></i>Sample of Short, Medium, and Long Trips</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#neighborhoods-individual"><i class="fa fa-check"></i>Neighborhoods individual</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Question on the Efficiency of Transit <br> in Absurd Situations</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="part-3-a-catastrophic-issue" class="section level1 unnumbered">
+<h1>Part 3: A Catastrophic Issue</h1>
+<p><img src="wmata_logo.png" width="80%" /></p>
+<p>Okay, I woke up the morning of the July 19th and found the two biggest roadblocks of the project waiting at my computer. What made it castrophic was that, along with these two issues, I had my first set of 90,000 routes.</p>
+<p>The first issue was that that day, Google had begun charging for their previously free API. A disastear for my student pockets, and so close to the solution. Well, I was too close to not try and find a replacement.</p>
+<p>The second issue was that my use of AWS had cost around $50, not something I was expected. Ooops.</p>
+<p>Well let’s try and solve the first issue first.</p>
+<div id="finding-a-replacement-for-google-routes-api" class="section level2 unnumbered">
+<h2>Finding a Replacement for Google Routes API</h2>
+<p>Finding another API was only a mild headache. The most annoying aspect was finding one that suppored transit routes and not exclusively driving directions. To the rescue: Here API. It had everything I wanted, except that no kind soul had made an R package to easily access it. It became pretty obvious during that day of research that Here was my best option. I would have to write some of my own functions to get it to work.</p>
+<div id="functions" class="section level3 unnumbered">
+<h3>Functions</h3>
+<p>Basically, I want to take my 3 lists of 90,000 rows and 360,000 indivudal cooridnates and feed them into the Here API.</p>
+<p>The API requires that the link I use look like:</p>
+<blockquote>
+<p>route.cit.api.here .com/routing/7.2/calculateroute.json?waypoint0=52.5208%2C13.4093&amp;waypoint1=52.5034%2C13.3295&amp;mode=fastest%3BpublicTransport &amp;combineChange=true&amp;app_id=DemoAppId01082013GAL&amp;app_code=AJKnXv84fjrb0KIHawS0Tg&quot;</p>
+</blockquote>
+<p>All coordinates needed to be adjusted to be strings that resemble <code>52.5208%2C13.4093</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">here_mcoord_fix &lt;-<span class="st"> </span><span class="cf">function</span>(df){
+  latitude &lt;-<span class="st"> </span>df[,<span class="dv">1</span>]
+  longitude &lt;-<span class="st"> </span>df[,<span class="dv">2</span>]
+  url2 &lt;-<span class="st"> </span><span class="kw">paste0</span>(longitude, <span class="st">&quot;%2C&quot;</span>, latitude)
+  <span class="kw">return</span>(url2)
+}</code></pre></div>
+<p>Now, there are several constants in the URL that can be set to variables. Then everything can be easily pasted together into proper URLS.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">base_url &lt;-<span class="st"> &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json&quot;</span>
+xmode &lt;-<span class="st"> &quot;&amp;mode=fastest%3BpublicTransport&amp;combineChange=true&quot;</span>
+<span class="co">#these two are different per API User</span>
+id &lt;-<span class="st"> &quot;&amp;app_id=SOME_NUMBERS_AND_LETTERS&amp;&quot;</span>
+code &lt;-<span class="st"> &quot;app_code=SOME_NUMBERS_AND_LETTERS&amp;departure=2018-07-18T11:00:00-05:00&quot;</span></code></pre></div>
+<p>And here’s the function that pulls everything together. It contains the <code>here_mcoord_fix</code> function within to cut steps down.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">get_here_urls &lt;-<span class="st"> </span><span class="cf">function</span>(origin, destination){
+  xorigin &lt;-<span class="st"> </span><span class="kw">here_mcoord_fix</span>(origin)
+  xdestination &lt;-<span class="st"> </span><span class="kw">here_mcoord_fix</span>(destination)
+  z &lt;-<span class="st"> </span><span class="kw">paste0</span>(base_url,<span class="st">&quot;?waypoint0=&quot;</span>,xorigin, <span class="st">&quot;&amp;waypoint1=&quot;</span>,
+              xdestination, xmode, id, code, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)
+  <span class="kw">return</span>(z) 
+}</code></pre></div>
+<p>So let me show the output:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">origin &lt;-<span class="st"> </span>philly_300_points<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(startLon, startLat)
+destination &lt;-<span class="st"> </span>philly_300_points<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(endLon, endLat)
+
+urls &lt;-<span class="st"> </span><span class="kw">get_here_urls</span>(origin, destination)
+
+<span class="co">#Let&#39;s take a peak at a random 1 of 89700 URLs we&#39;ve created.</span>
+urls[<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>,<span class="dv">89700</span>)]</code></pre></div>
+<pre><code>## [1] &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=39.99505%2C-75.10384&amp;waypoint1=2%2C40.0432354724932&amp;mode=fastest%3BpublicTransport&amp;combineChange=true&amp;app_id=SOME_NUMBERS_AND_LETTERS&amp;app_code=SOME_NUMBERS_AND_LETTERS&amp;departure=2018-07-18T11:00:00-05:00&quot;</code></pre>
+</div>
+</div>
+<div id="running-this-code-without-emptying-my-pockets" class="section level2 unnumbered">
+<h2>Running this Code without Emptying my Pockets</h2>
+<p>So, I decided not to use AWS anymore…maybe if I had deep pockets I would, but I had decided to find an alternative. The first thing I learned was that I did not<a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a> really fully understand parallel computing. There were better functions than <code>mclapply</code> available. The second thing I realized that I was obsessed with doing the work on the cloud. On one hand, the cloud is definietly better. On the other hand, only if you’ve got that cash-money.</p>
+<p>The solution was to use the <code>DoParallel</code> package with computers that have multiple cores, thus performing parallel computations on each core.</p>
+<div id="getting-doparallel-up-and-running" class="section level3 unnumbered">
+<h3>Getting DoParallel Up and Running</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Setting up parallel with one less core than available on the computer. This is to avoid intense crashing.</span>
+no_cores &lt;-<span class="st"> </span><span class="kw">detectCores</span>() <span class="op">-</span><span class="st"> </span><span class="dv">1</span>  
+cl &lt;-<span class="st"> </span><span class="kw">makeCluster</span>(no_cores)  
+<span class="kw">registerDoParallel</span>(cl)  
+
+<span class="co">#To see if that worked: if it returns 1 - then it didn&#39;t work</span>
+<span class="kw">getDoParWorkers</span>()
+
+<span class="co">#To end the parallel cores</span>
+<span class="kw">registerDoSEQ</span>()
+<span class="kw">getDoParWorkers</span>()</code></pre></div>
+</div>
+<div id="getting-the-functions-ready-to-access-the-here-api" class="section level3">
+<h3><span class="header-section-number">1.0.1</span> Getting the functions ready to access the here API</h3>
+<p>The first step is getting it running before going parallel and seeing what the outputs look like.</p>
+<p>There are some messy looking results so I’ve tabbed this section to maintain readability. Feel free to look through it if you’re interested. Each tab is a view of each output.</p>
+<div id="everything" class="section level4 unnumbered">
+<h4>Everything</h4>
+<p>The first step is getting it running before going parallel and seeing what the outputs look like:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#We&#39;ll use one random url to test</span>
+url_test &lt;-<span class="st"> </span>urls[<span class="kw">runif</span>(<span class="dv">1</span>, <span class="dv">1</span>,<span class="dv">89700</span>)]
+<span class="kw">require</span>(httr)
+<span class="kw">require</span>(jsonlite)
+
+GET_url_test &lt;-<span class="st"> </span><span class="kw">GET</span>(url_test)
+content_url_test &lt;-<span class="st">  </span><span class="kw">content</span>(GET_url_test, <span class="st">&quot;text&quot;</span>)
+json_url_test &lt;-<span class="st">   </span><span class="kw">fromJSON</span>(content_url_test, <span class="dt">flatten =</span> <span class="ot">TRUE</span>)
+final_url_test &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(json_url_test)</code></pre></div>
+</div>
+<div id="step-1" class="section level4 unnumbered">
+<h4>Step 1</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">GET_url_test</code></pre></div>
+<pre><code>## Response [https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=39.891007017175%2C-75.1736776842591&amp;waypoint1=39.9018409331484%2C-75.1355796363872&amp;mode=fastest%3BpublicTransport&amp;combineChange=true&amp;app_id=geLVK2d13btBHVl3K7zM&amp;app_code=YsaWhU8qeIQtiFlSVFf7gg&amp;departure=2018-07-18T11:00:00-05:00]
+##   Date: 2018-07-23 23:06
+##   Status: 200
+##   Content-Type: application/json;charset=utf-8
+##   Size: 9.82 kB
+## {&quot;response&quot;:{&quot;metaInfo&quot;:{&quot;timestamp&quot;:&quot;2018-07-23T23:06:49Z&quot;,&quot;mapVersion&quot;...</code></pre>
+<p>There are a few good pieces of news in this code:</p>
+<p><em>The status is 200 meaning it worked<a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a> </em>The data is in JSON format *The size is not absurd</p>
+</div>
+<div id="step-2" class="section level4 unnumbered">
+<h4>Step 2</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">content_url_test &lt;-<span class="st">  </span><span class="kw">content</span>(GET_url_test, <span class="st">&quot;text&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;{\&quot;response\&quot;:{\&quot;metaInfo\&quot;:{\&quot;timestamp\&quot;:\&quot;2018-07-23T23:08:13Z\&quot;,\&quot;mapVersion\&quot;:\&quot;8.30.85.156\&quot;,\&quot;moduleVersion\&quot;:\&quot;7.2.201829-33197\&quot;,\&quot;interfaceVersion\&quot;:\&quot;2.6.34\&quot;,\&quot;availableMapVersion\&quot;:[\&quot;8.30.85.156\&quot;]},\&quot;route\&quot;:[{\&quot;waypoint\&quot;:[{\&quot;linkId\&quot;:\&quot;+18693161\&quot;,\&quot;mappedPosition\&quot;:{\&quot;latitude\&quot;:40.0568444,\&quot;longitude\&quot;:-75.1911711},\&quot;originalPosition\&quot;:{\&quot;latitude\&quot;:40.0567437,\&quot;longitude\&quot;:-75.19102},\&quot;type\&quot;:\&quot;stopOver\&quot;,\&quot;spot\&quot;:0.3478261,\&quot;sideOfStreet\&quot;:\&quot;right\&quot;,\&quot;mappedRoadName\&quot;:\&quot;W Mt Pleasant Ave\&quot;,\&quot;label\&quot;:\&quot;W Mt Pleasant Ave\&quot;,\&quot;shapeIndex\&quot;:0},{\&quot;linkId\&quot;:\&quot;+18769947\&quot;,\&quot;mappedPosition\&quot;:{\&quot;latitude\&quot;:39.8786749,\&quot;longitude\&quot;:-75.2075897},\&quot;originalPosition\&quot;:{\&quot;latitude\&quot;:39.8777652,\&quot;longitude\&quot;:-75.2059473},\&quot;type\&quot;:\&quot;stopOver\&quot;,\&quot;spot\&quot;:0.4118199,\&quot;sideOfStreet\&quot;:\&quot;neither\&quot;,\&quot;mappedRoadName\&quot;:\&quot;Fort Mifflin Rd\&quot;,\&quot;label\&quot;:\&quot;Fort Mifflin Rd\&quot;,\&quot;shapeIndex\&quot;:188}],\&quot;mode\&quot;:{\&quot;type\&quot;:\&quot;fastest\&quot;,\&quot;transportModes\&quot;:[\&quot;publicTransport\&quot;],\&quot;trafficMode\&quot;:\&quot;disabled\&quot;,\&quot;feature\&quot;:[]},\&quot;leg\&quot;:[{\&quot;start\&quot;:{\&quot;linkId\&quot;:\&quot;+18693161\&quot;,\&quot;mappedPosition\&quot;:{\&quot;latitude\&quot;:40.0568444,\&quot;longitude\&quot;:-75.1911711},\&quot;originalPosition\&quot;:{\&quot;latitude\&quot;:40.0567437,\&quot;longitude\&quot;:-75.19102},\&quot;type\&quot;:\&quot;stopOver\&quot;,\&quot;spot\&quot;:0.3478261,\&quot;sideOfStreet\&quot;:\&quot;right\&quot;,\&quot;mappedRoadName\&quot;:\&quot;W Mt Pleasant Ave\&quot;,\&quot;label\&quot;:\&quot;W Mt Pleasant Ave\&quot;,\&quot;shapeIndex\&quot;:0},\&quot;end\&quot;:{\&quot;linkId\&quot;:\&quot;+18769947\&quot;,\&quot;mappedPosition\&quot;:{\&quot;latitude\&quot;:39.8786749,\&quot;longitude\&quot;:-75.2075897},\&quot;originalPosition\&quot;:{\&quot;latitude\&quot;:39.8777652,\&quot;longitude\&quot;:-75.2059473},\&quot;type\&quot;:\&quot;stopOver\&quot;,\&quot;spot\&quot;:0.4118199,\&quot;sideOfStreet\&quot;:\&quot;neither\&quot;,\&quot;mappedRoadName\&quot;:\&quot;Fort Mifflin Rd\&quot;,\&quot;label\&quot;:\&quot;Fort Mifflin Rd\&quot;,\&quot;shapeIndex\&quot;:188},\&quot;length\&quot;:27716,\&quot;travelTime\&quot;:9066,\&quot;maneuver\&quot;:[{\&quot;position\&quot;:{\&quot;latitude\&quot;:40.0568444,\&quot;longitude\&quot;:-75.1911711},\&quot;instruction\&quot;:\&quot;Head &lt;span class=\\\&quot;heading\\\&quot;&gt;northeast&lt;/span&gt; on &lt;span class=\\\&quot;street\\\&quot;&gt;W Mt Pleasant Ave&lt;/span&gt;. &lt;span class=\\\&quot;distance-description\\\&quot;&gt;Go for &lt;span class=\\\&quot;length\\\&quot;&gt;228 m&lt;/span&gt;.&lt;/span&gt;\&quot;,\&quot;travelTime\&quot;:237,\&quot;length\&quot;:228,\&quot;id\&quot;:\&quot;M1\&quot;,\&quot;_type\&quot;:\&quot;PrivateTransportManeuverType\&quot;},{\&quot;position\&quot;:{\&quot;latitude\&quot;:40.0583732,\&quot;longitude\&quot;:-75.189389},\&quot;instruction\&quot;:\&quot;Turn &lt;span class=\\\&quot;direction\\\&quot;&gt;left&lt;/span&gt; onto &lt;span class=\\\&quot;next-street\\\&quot;&gt;Germantown Ave&lt;/span&gt;. &lt;span class=\\\&quot;distance-description\\\&quot;&gt;Go for &lt;span class=\\\&quot;length\\\&quot;&gt;19 m&lt;/span&gt;.&lt;/span&gt;\&quot;,\&quot;travelTime\&quot;:19,\&quot;length\&quot;:19,\&quot;id\&quot;:\&quot;M2\&quot;,\&quot;_type\&quot;:\&quot;PrivateTransportManeuverType\&quot;},{\&quot;position\&quot;:{\&quot;latitude\&quot;:40.0583732,\&quot;longitude\&quot;:-75.189389},\&quot;instruction\&quot;:\&quot;Go to the stop &lt;span class=\\\&quot;station\\\&quot;&gt;Germantown Av &amp; Mt Pleasant Av&lt;/span&gt; and take the &lt;span class=\\\&quot;transit\\\&quot;&gt;bus&lt;/span&gt; &lt;span class=\\\&quot;line\\\&quot;&gt;23&lt;/span&gt; toward &lt;span class=\\\&quot;destination\\\&quot;&gt;11th St &amp; Market St -&lt;/span&gt;. &lt;span class=\\\&quot;distance-description\\\&quot;&gt;Follow for &lt;span class=\\\&quot;stops\\\&quot;&gt;43 stops&lt;/span&gt;.&lt;/span&gt;\&quot;,\&quot;travelTime\&quot;:1770,\&quot;length\&quot;:6529,\&quot;id\&quot;:\&quot;M3\&quot;,\&quot;stopName\&quot;:\&quot;Germantown Av &amp; Mt Pleasant Av\&quot;,\&quot;_type\&quot;:\&quot;PublicTransportManeuverType\&quot;},{\&quot;position\&quot;:{\&quot;latitude\&quot;:40.0094068,\&quot;longitude\&quot;:-75.1509583},\&quot;instruction\&quot;:\&quot;Get off at &lt;span class=\\\&quot;station\\\&quot;&gt;Germantown Av &amp; Erie Av&lt;/span&gt;.\&quot;,\&quot;travelTime\&quot;:0,\&quot;length\&quot;:0,\&quot;id\&quot;:\&quot;M4\&quot;,\&quot;stopName\&quot;:\&quot;Germantown Av &amp; Erie Av\&quot;,\&quot;nextRoadName\&quot;:\&quot;Germantown Ave\&quot;,\&quot;_type\&quot;:\&quot;PublicTransportManeuverType\&quot;},{\&quot;position\&quot;:{\&quot;latitude\&quot;:40.0094068,\&quot;longitude\&quot;:-75.1509583},\&quot;instruction\&quot;:\&quot;Head &lt;span class=\\\&quot;heading\\\&quot;&gt;east&lt;/span&gt; on &lt;span class=\\\&quot;street\\\&quot;&gt;Germantown Ave&lt;/span&gt;. &lt;span class=\\\&quot;distance-description\\\&quot;&gt;Go for &lt;span class=\\\&quot;length\\\&quot;&gt;28 m&lt;/span&gt;.&lt;/span&gt;\&quot;,\&quot;travelTime\&quot;:41,\&quot;length\&quot;:28,\&quot;id\&quot;:\&quot;M5\&quot;,\&quot;_type\&quot;:\&quot;PrivateTransportManeuverType\&quot;},{\&quot;position\&quot;:{\&quot;latitude\&quot;:40.0092137,\&quot;longitude\&quot;:-75.1508081},\&quot;instruction\&quot;:\&quot;Turn &lt;span class=\\\&quot;direction\\\&quot;&gt;right&lt;/span&gt; onto &lt;span class=\\\&quot;next-street\\\&quot;&gt;W Erie Ave&lt;/span&gt;. &lt;span class=\\\&quot;distance-description\\\&quot;&gt;Go for &lt;span class=\\\&quot;length\\\&quot;&gt;36 m&lt;/span&gt;.&lt;/span&gt;\&quot;,\&quot;travelTime\&quot;:46,\&quot;length\&quot;:36,\&quot;id\&quot;:\&quot;M6\&quot;,\&quot;_type\&quot;:\&quot;PrivateTransportManeuverType\&quot;},{\&quot;position\&quot;:{\&quot;latitude\&quot;:40.0092459,\&quot;longitude\&quot;:-75.1512265},\&quot;instruction\&quot;:\&quot;Turn &lt;span class=\\\&quot;direction\\\&quot;&gt;left&lt;/span&gt; onto &lt;span class=\\\&quot;next-street\\\&quot;&gt;N Broad St&lt;/span&gt;. &lt;span class=\\\&quot;distance-description\\\&quot;&gt;Go for &lt;span class=\\\&quot;length\\\&quot;&gt;3 m&lt;/span&gt;.&lt;/span&gt;\&quot;,\&quot;travelTime\&quot;:3,\&quot;length\&quot;:3,\&quot;id\&quot;:\&quot;M7\&quot;,\&quot;_type\&quot;:\&quot;PrivateTransportManeuverType\&quot;},{\&quot;position\&quot;:{\&quot;latitude\&quot;:40.0092459,\&quot;longitude\&quot;:-75.1513124},\&quot;instruction\&quot;:\&quot;Go to the station &lt;span class=\\\&quot;station\\\&quot;&gt;Erie Station&lt;/span&gt; and take the &lt;span class=\\\&quot;transit\\\&quot;&gt;rail&lt;/span&gt; &lt;span class=\\\&quot;line\\\&quot;&gt;BSL&lt;/span&gt; toward &lt;span class=\\\&quot;destination\\\&quot;&gt;at&amp;T Station&lt;/span&gt;. &lt;span class=\\\&quot;distance-description\\\&quot;&gt;Follow for &lt;span class=\\\&quot;stops\\\&quot;&gt;15 stations&lt;/span&gt;.&lt;/span&gt;\&quot;,\&quot;travelTime\&quot;:1610,\&quot;length\&quot;:10420,\&quot;id\&quot;:\&quot;M8\&quot;,\&quot;stopName\&quot;:\&quot;Erie Station\&quot;,\&quot;_type\&quot;:\&quot;PublicTransportManeuverType\&quot;},{\&quot;position\&quot;:{\&quot;latitude\&quot;:39.9167848,\&quot;longitude\&quot;:-75.1714182},\&quot;instruction\&quot;:\&quot;Get off at &lt;span class=\\\&quot;station\\\&quot;&gt;Oregon Station&lt;/span&gt;.\&quot;,\&quot;travelTime\&quot;:0,\&quot;length\&quot;:0,\&quot;id\&quot;:\&quot;M9\&quot;,\&quot;stopName\&quot;:\&quot;Oregon Station\&quot;,\&quot;_type\&quot;:\&quot;PublicTransportManeuverType\&quot;},{\&quot;position\&quot;:{\&quot;latitude\&quot;:39.9167848,\&quot;longitude\&quot;:-75.1714182},\&quot;instruction\&quot;:\&quot;Head &lt;span class=\\\&quot;heading\\\&quot;&gt;northeast&lt;/span&gt;. &lt;span class=\\\&quot;distance-description\\\&quot;&gt;Go for &lt;span class=\\\&quot;length\\\&quot;&gt;10 m&lt;/span&gt;.&lt;/span&gt;\&quot;,\&quot;travelTime\&quot;:14,\&quot;length\&quot;:10,\&quot;id\&quot;:\&quot;M10\&quot;,\&quot;_type\&quot;:\&quot;PrivateTransportManeuverType\&quot;},{\&quot;position\&quot;:{\&quot;latitude\&quot;:39.9168277,\&quot;longitude\&quot;:-75.1713324},\&quot;instruction\&quot;:\&quot;Turn &lt;span class=\\\&quot;direction\\\&quot;&gt;slightly left&lt;/span&gt; onto &lt;span class=\\\&quot;next-street\\\&quot;&gt;S Broad St&lt;/span&gt;. &lt;span class=\\\&quot;distance-description\\\&quot;&gt;Go for &lt;span class=\\\&quot;length\\\&quot;&gt;25 m&lt;/span&gt;.&lt;/span&gt;\&quot;,\&quot;travelTime\&quot;:25,\&quot;length\&quot;:25,\&quot;id\&quot;:\&quot;M11\&quot;,\&quot;_type\&quot;:\&quot;PrivateTransportManeuverType\&quot;},{\&quot;position\&quot;:{\&quot;latitude\&quot;:39.9168277,\&quot;longitude\&quot;:-75.1713324},\&quot;instruction\&quot;:\&quot;Go to the stop &lt;span class=\\\&quot;station\\\&quot;&gt;Oregon Av &amp; Broad St&lt;/span&gt; and take the &lt;span class=\\\&quot;transit\\\&quot;&gt;bus&lt;/span&gt; &lt;span class=\\\&quot;line\\\&quot;&gt;68&lt;/span&gt; toward &lt;span class=\\\&quot;destination\\\&quot;&gt;69th St Transportation Center South Terminal&lt;/span&gt;. &lt;span class=\\\&quot;distance-description\\\&quot;&gt;Follow for &lt;span class=\\\&quot;stops\\\&quot;&gt;16 stops&lt;/span&gt;.&lt;/span&gt;\&quot;,\&quot;travelTime\&quot;:2720,\&quot;length\&quot;:7864,\&quot;id\&quot;:\&quot;M12\&quot;,\&quot;stopName\&quot;:\&quot;Oregon Av &amp; Broad St\&quot;,\&quot;_type\&quot;:\&quot;PublicTransportManeuverType\&quot;},{\&quot;position\&quot;:{\&quot;latitude\&quot;:39.8836005,\&quot;longitude\&quot;:-75.2235281},\&quot;instruction\&quot;:\&quot;Get off at &lt;span class=\\\&quot;station\\\&quot;&gt;Enterprise Av &amp; Fort Mifflin Rd&lt;/span&gt;.\&quot;,\&quot;travelTime\&quot;:0,\&quot;length\&quot;:0,\&quot;id\&quot;:\&quot;M13\&quot;,\&quot;stopName\&quot;:\&quot;Enterprise Av &amp; Fort Mifflin Rd\&quot;,\&quot;nextRoadName\&quot;:\&quot;Enterprise Ave\&quot;,\&quot;_type\&quot;:\&quot;PublicTransportManeuverType\&quot;},{\&quot;position\&quot;:{\&quot;latitude\&quot;:39.8836005,\&quot;longitude\&quot;:-75.2235281},\&quot;instruction\&quot;:\&quot;Head &lt;span class=\\\&quot;heading\\\&quot;&gt;northwest&lt;/span&gt; on &lt;span class=\\\&quot;street\\\&quot;&gt;Enterprise Ave&lt;/span&gt;. &lt;span class=\\\&quot;distance-description\\\&quot;&gt;Go for &lt;span class=\\\&quot;length\\\&quot;&gt;32 m&lt;/span&gt;.&lt;/span&gt;\&quot;,\&quot;travelTime\&quot;:42,\&quot;length\&quot;:32,\&quot;id\&quot;:\&quot;M14\&quot;,\&quot;_type\&quot;:\&quot;PrivateTransportManeuverType\&quot;},{\&quot;position\&quot;:{\&quot;latitude\&quot;:39.8837721,\&quot;longitude\&quot;:-75.223335},\&quot;instruction\&quot;:\&quot;Turn &lt;span class=\\\&quot;direction\\\&quot;&gt;right&lt;/span&gt; onto &lt;span class=\\\&quot;next-street\\\&quot;&gt;Fort Mifflin Rd&lt;/span&gt;. &lt;span class=\\\&quot;distance-description\\\&quot;&gt;Go for &lt;span class=\\\&quot;length\\\&quot;&gt;1.7 km&lt;/span&gt;.&lt;/span&gt;\&quot;,\&quot;travelTime\&quot;:1723,\&quot;length\&quot;:1713,\&quot;id\&quot;:\&quot;M15\&quot;,\&quot;_type\&quot;:\&quot;PrivateTransportManeuverType\&quot;},{\&quot;position\&quot;:{\&quot;latitude\&quot;:39.8775494,\&quot;longitude\&quot;:-75.2135289},\&quot;instruction\&quot;:\&quot;Turn &lt;span class=\\\&quot;direction\\\&quot;&gt;left&lt;/span&gt; onto &lt;span class=\\\&quot;next-street\\\&quot;&gt;Fort Mifflin Rd&lt;/span&gt;. &lt;span class=\\\&quot;distance-description\\\&quot;&gt;Go for &lt;span class=\\\&quot;length\\\&quot;&gt;75 m&lt;/span&gt;.&lt;/span&gt;\&quot;,\&quot;travelTime\&quot;:76,\&quot;length\&quot;:75,\&quot;id\&quot;:\&quot;M16\&quot;,\&quot;_type\&quot;:\&quot;PrivateTransportManeuverType\&quot;},{\&quot;position\&quot;:{\&quot;latitude\&quot;:39.8770881,\&quot;longitude\&quot;:-75.2129066},\&quot;instruction\&quot;:\&quot;Take the street on the &lt;span class=\\\&quot;direction\\\&quot;&gt;right&lt;/span&gt;. &lt;span class=\\\&quot;distance-description\\\&quot;&gt;Go for &lt;span class=\\\&quot;length\\\&quot;&gt;734 m&lt;/span&gt;.&lt;/span&gt;\&quot;,\&quot;travelTime\&quot;:740,\&quot;length\&quot;:734,\&quot;id\&quot;:\&quot;M17\&quot;,\&quot;_type\&quot;:\&quot;PrivateTransportManeuverType\&quot;},{\&quot;position\&quot;:{\&quot;latitude\&quot;:39.8786749,\&quot;longitude\&quot;:-75.2075897},\&quot;instruction\&quot;:\&quot;Arrive at &lt;span class=\\\&quot;street\\\&quot;&gt;Fort Mifflin Rd&lt;/span&gt;.\&quot;,\&quot;travelTime\&quot;:0,\&quot;length\&quot;:0,\&quot;id\&quot;:\&quot;M18\&quot;,\&quot;_type\&quot;:\&quot;PrivateTransportManeuverType\&quot;}]}],\&quot;publicTransportLine\&quot;:[{\&quot;lineName\&quot;:\&quot;23\&quot;,\&quot;companyName\&quot;:\&quot;\&quot;,\&quot;destination\&quot;:\&quot;11th St &amp; Market St -\&quot;,\&quot;type\&quot;:\&quot;busPublic\&quot;,\&quot;id\&quot;:\&quot;L1\&quot;},{\&quot;lineName\&quot;:\&quot;BSL\&quot;,\&quot;lineForeground\&quot;:\&quot;#FF9933\&quot;,\&quot;lineBackground\&quot;:\&quot;#FF9933\&quot;,\&quot;companyName\&quot;:\&quot;\&quot;,\&quot;destination\&quot;:\&quot;at&amp;T Station\&quot;,\&quot;type\&quot;:\&quot;railMetro\&quot;,\&quot;id\&quot;:\&quot;L2\&quot;},{\&quot;lineName\&quot;:\&quot;68\&quot;,\&quot;companyName\&quot;:\&quot;\&quot;,\&quot;destination\&quot;:\&quot;69th St Transportation Center South Terminal\&quot;,\&quot;type\&quot;:\&quot;busPublic\&quot;,\&quot;id\&quot;:\&quot;L3\&quot;}],\&quot;summary\&quot;:{\&quot;distance\&quot;:27716,\&quot;baseTime\&quot;:9066,\&quot;flags\&quot;:[\&quot;noThroughRoad\&quot;,\&quot;builtUpArea\&quot;,\&quot;park\&quot;,\&quot;privateRoad\&quot;],\&quot;text\&quot;:\&quot;The trip takes &lt;span class=\\\&quot;length\\\&quot;&gt;27.7 km&lt;/span&gt; and &lt;span class=\\\&quot;time\\\&quot;&gt;2:31 h&lt;/span&gt;.\&quot;,\&quot;travelTime\&quot;:9066,\&quot;departure\&quot;:\&quot;2018-07-18T12:00:00-04:00\&quot;,\&quot;_type\&quot;:\&quot;PublicTransportRouteSummaryType\&quot;}}],\&quot;language\&quot;:\&quot;en-us\&quot;}}\n&quot;</code></pre>
+</div>
+<div id="step-3" class="section level4 unnumbered">
+<h4>Step 3</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">json_url_test &lt;-<span class="st">   </span><span class="kw">fromJSON</span>(content_url_test, <span class="dt">flatten =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## $response
+## $response$metaInfo
+## $response$metaInfo$timestamp
+## [1] &quot;2018-07-23T23:08:13Z&quot;
+## 
+## $response$metaInfo$mapVersion
+## [1] &quot;8.30.85.156&quot;
+## 
+## $response$metaInfo$moduleVersion
+## [1] &quot;7.2.201829-33197&quot;
+## 
+## $response$metaInfo$interfaceVersion
+## [1] &quot;2.6.34&quot;
+## 
+## $response$metaInfo$availableMapVersion
+## [1] &quot;8.30.85.156&quot;
+## 
+## 
+## $response$route
+##                                                                                                                                                                                                                                                           waypoint
+## 1 +18693161, +18769947, stopOver, stopOver, 0.3478261, 0.4118199, right, neither, W Mt Pleasant Ave, Fort Mifflin Rd, W Mt Pleasant Ave, Fort Mifflin Rd, 0, 188, 40.0568444, 39.8786749, -75.1911711, -75.2075897, 40.0567437, 39.8777652, -75.19102, -75.2059473
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      leg
+## 1 27716, 9066, Head &lt;span class=&quot;heading&quot;&gt;northeast&lt;/span&gt; on &lt;span class=&quot;street&quot;&gt;W Mt Pleasant Ave&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;228 m&lt;/span&gt;.&lt;/span&gt;, Turn &lt;span class=&quot;direction&quot;&gt;left&lt;/span&gt; onto &lt;span class=&quot;next-street&quot;&gt;Germantown Ave&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;19 m&lt;/span&gt;.&lt;/span&gt;, Go to the stop &lt;span class=&quot;station&quot;&gt;Germantown Av &amp; Mt Pleasant Av&lt;/span&gt; and take the &lt;span class=&quot;transit&quot;&gt;bus&lt;/span&gt; &lt;span class=&quot;line&quot;&gt;23&lt;/span&gt; toward &lt;span class=&quot;destination&quot;&gt;11th St &amp; Market St -&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Follow for &lt;span class=&quot;stops&quot;&gt;43 stops&lt;/span&gt;.&lt;/span&gt;, Get off at &lt;span class=&quot;station&quot;&gt;Germantown Av &amp; Erie Av&lt;/span&gt;., Head &lt;span class=&quot;heading&quot;&gt;east&lt;/span&gt; on &lt;span class=&quot;street&quot;&gt;Germantown Ave&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;28 m&lt;/span&gt;.&lt;/span&gt;, Turn &lt;span class=&quot;direction&quot;&gt;right&lt;/span&gt; onto &lt;span class=&quot;next-street&quot;&gt;W Erie Ave&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;36 m&lt;/span&gt;.&lt;/span&gt;, Turn &lt;span class=&quot;direction&quot;&gt;left&lt;/span&gt; onto &lt;span class=&quot;next-street&quot;&gt;N Broad St&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;3 m&lt;/span&gt;.&lt;/span&gt;, Go to the station &lt;span class=&quot;station&quot;&gt;Erie Station&lt;/span&gt; and take the &lt;span class=&quot;transit&quot;&gt;rail&lt;/span&gt; &lt;span class=&quot;line&quot;&gt;BSL&lt;/span&gt; toward &lt;span class=&quot;destination&quot;&gt;at&amp;T Station&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Follow for &lt;span class=&quot;stops&quot;&gt;15 stations&lt;/span&gt;.&lt;/span&gt;, Get off at &lt;span class=&quot;station&quot;&gt;Oregon Station&lt;/span&gt;., Head &lt;span class=&quot;heading&quot;&gt;northeast&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;10 m&lt;/span&gt;.&lt;/span&gt;, Turn &lt;span class=&quot;direction&quot;&gt;slightly left&lt;/span&gt; onto &lt;span class=&quot;next-street&quot;&gt;S Broad St&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;25 m&lt;/span&gt;.&lt;/span&gt;, Go to the stop &lt;span class=&quot;station&quot;&gt;Oregon Av &amp; Broad St&lt;/span&gt; and take the &lt;span class=&quot;transit&quot;&gt;bus&lt;/span&gt; &lt;span class=&quot;line&quot;&gt;68&lt;/span&gt; toward &lt;span class=&quot;destination&quot;&gt;69th St Transportation Center South Terminal&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Follow for &lt;span class=&quot;stops&quot;&gt;16 stops&lt;/span&gt;.&lt;/span&gt;, Get off at &lt;span class=&quot;station&quot;&gt;Enterprise Av &amp; Fort Mifflin Rd&lt;/span&gt;., Head &lt;span class=&quot;heading&quot;&gt;northwest&lt;/span&gt; on &lt;span class=&quot;street&quot;&gt;Enterprise Ave&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;32 m&lt;/span&gt;.&lt;/span&gt;, Turn &lt;span class=&quot;direction&quot;&gt;right&lt;/span&gt; onto &lt;span class=&quot;next-street&quot;&gt;Fort Mifflin Rd&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;1.7 km&lt;/span&gt;.&lt;/span&gt;, Turn &lt;span class=&quot;direction&quot;&gt;left&lt;/span&gt; onto &lt;span class=&quot;next-street&quot;&gt;Fort Mifflin Rd&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;75 m&lt;/span&gt;.&lt;/span&gt;, Take the street on the &lt;span class=&quot;direction&quot;&gt;right&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;734 m&lt;/span&gt;.&lt;/span&gt;, Arrive at &lt;span class=&quot;street&quot;&gt;Fort Mifflin Rd&lt;/span&gt;., 237, 19, 1770, 0, 41, 46, 3, 1610, 0, 14, 25, 2720, 0, 42, 1723, 76, 740, 0, 228, 19, 6529, 0, 28, 36, 3, 10420, 0, 10, 25, 7864, 0, 32, 1713, 75, 734, 0, M1, M2, M3, M4, M5, M6, M7, M8, M9, M10, M11, M12, M13, M14, M15, M16, M17, M18, PrivateTransportManeuverType, PrivateTransportManeuverType, PublicTransportManeuverType, PublicTransportManeuverType, PrivateTransportManeuverType, PrivateTransportManeuverType, PrivateTransportManeuverType, PublicTransportManeuverType, PublicTransportManeuverType, PrivateTransportManeuverType, PrivateTransportManeuverType, PublicTransportManeuverType, PublicTransportManeuverType, PrivateTransportManeuverType, PrivateTransportManeuverType, PrivateTransportManeuverType, PrivateTransportManeuverType, PrivateTransportManeuverType, NA, NA, Germantown Av &amp; Mt Pleasant Av, Germantown Av &amp; Erie Av, NA, NA, NA, Erie Station, Oregon Station, NA, NA, Oregon Av &amp; Broad St, Enterprise Av &amp; Fort Mifflin Rd, NA, NA, NA, NA, NA, NA, NA, NA, Germantown Ave, NA, NA, NA, NA, NA, NA, NA, NA, Enterprise Ave, NA, NA, NA, NA, NA, 40.0568444, 40.0583732, 40.0583732, 40.0094068, 40.0094068, 40.0092137, 40.0092459, 40.0092459, 39.9167848, 39.9167848, 39.9168277, 39.9168277, 39.8836005, 39.8836005, 39.8837721, 39.8775494, 39.8770881, 39.8786749, -75.1911711, -75.189389, -75.189389, -75.1509583, -75.1509583, -75.1508081, -75.1512265, -75.1513124, -75.1714182, -75.1714182, -75.1713324, -75.1713324, -75.2235281, -75.2235281, -75.223335, -75.2135289, -75.2129066, -75.2075897, +18693161, stopOver, 0.3478261, right, W Mt Pleasant Ave, W Mt Pleasant Ave, 0, 40.0568444, -75.1911711, 40.0567437, -75.19102, +18769947, stopOver, 0.4118199, neither, Fort Mifflin Rd, Fort Mifflin Rd, 188, 39.8786749, -75.2075897, 39.8777652, -75.2059473
+##                                                                                                                                                                   publicTransportLine
+## 1 23, BSL, 68, , , , 11th St &amp; Market St -, at&amp;T Station, 69th St Transportation Center South Terminal, busPublic, railMetro, busPublic, L1, L2, L3, NA, #FF9933, NA, NA, #FF9933, NA
+##   mode.type mode.transportModes mode.trafficMode mode.feature
+## 1   fastest     publicTransport         disabled         NULL
+##   summary.distance summary.baseTime
+## 1            27716             9066
+##                                   summary.flags
+## 1 noThroughRoad, builtUpArea, park, privateRoad
+##                                                                               summary.text
+## 1 The trip takes &lt;span class=&quot;length&quot;&gt;27.7 km&lt;/span&gt; and &lt;span class=&quot;time&quot;&gt;2:31 h&lt;/span&gt;.
+##   summary.travelTime         summary.departure
+## 1               9066 2018-07-18T12:00:00-04:00
+##                     summary._type
+## 1 PublicTransportRouteSummaryType
+## 
+## $response$language
+## [1] &quot;en-us&quot;</code></pre>
+</div>
+<div id="step-4" class="section level4 unnumbered">
+<h4>step 4</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> final_url_test &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(json_url_test)</code></pre></div>
+<pre><code>##   response.metaInfo.timestamp response.metaInfo.mapVersion
+## 1        2018-07-23T23:08:13Z                  8.30.85.156
+##   response.metaInfo.moduleVersion response.metaInfo.interfaceVersion
+## 1                7.2.201829-33197                             2.6.34
+##   response.metaInfo.availableMapVersion
+## 1                           8.30.85.156
+##                                                                                                                                                                                                                                            response.route.waypoint
+## 1 +18693161, +18769947, stopOver, stopOver, 0.3478261, 0.4118199, right, neither, W Mt Pleasant Ave, Fort Mifflin Rd, W Mt Pleasant Ave, Fort Mifflin Rd, 0, 188, 40.0568444, 39.8786749, -75.1911711, -75.2075897, 40.0567437, 39.8777652, -75.19102, -75.2059473
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       response.route.leg
+## 1 27716, 9066, Head &lt;span class=&quot;heading&quot;&gt;northeast&lt;/span&gt; on &lt;span class=&quot;street&quot;&gt;W Mt Pleasant Ave&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;228 m&lt;/span&gt;.&lt;/span&gt;, Turn &lt;span class=&quot;direction&quot;&gt;left&lt;/span&gt; onto &lt;span class=&quot;next-street&quot;&gt;Germantown Ave&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;19 m&lt;/span&gt;.&lt;/span&gt;, Go to the stop &lt;span class=&quot;station&quot;&gt;Germantown Av &amp; Mt Pleasant Av&lt;/span&gt; and take the &lt;span class=&quot;transit&quot;&gt;bus&lt;/span&gt; &lt;span class=&quot;line&quot;&gt;23&lt;/span&gt; toward &lt;span class=&quot;destination&quot;&gt;11th St &amp; Market St -&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Follow for &lt;span class=&quot;stops&quot;&gt;43 stops&lt;/span&gt;.&lt;/span&gt;, Get off at &lt;span class=&quot;station&quot;&gt;Germantown Av &amp; Erie Av&lt;/span&gt;., Head &lt;span class=&quot;heading&quot;&gt;east&lt;/span&gt; on &lt;span class=&quot;street&quot;&gt;Germantown Ave&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;28 m&lt;/span&gt;.&lt;/span&gt;, Turn &lt;span class=&quot;direction&quot;&gt;right&lt;/span&gt; onto &lt;span class=&quot;next-street&quot;&gt;W Erie Ave&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;36 m&lt;/span&gt;.&lt;/span&gt;, Turn &lt;span class=&quot;direction&quot;&gt;left&lt;/span&gt; onto &lt;span class=&quot;next-street&quot;&gt;N Broad St&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;3 m&lt;/span&gt;.&lt;/span&gt;, Go to the station &lt;span class=&quot;station&quot;&gt;Erie Station&lt;/span&gt; and take the &lt;span class=&quot;transit&quot;&gt;rail&lt;/span&gt; &lt;span class=&quot;line&quot;&gt;BSL&lt;/span&gt; toward &lt;span class=&quot;destination&quot;&gt;at&amp;T Station&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Follow for &lt;span class=&quot;stops&quot;&gt;15 stations&lt;/span&gt;.&lt;/span&gt;, Get off at &lt;span class=&quot;station&quot;&gt;Oregon Station&lt;/span&gt;., Head &lt;span class=&quot;heading&quot;&gt;northeast&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;10 m&lt;/span&gt;.&lt;/span&gt;, Turn &lt;span class=&quot;direction&quot;&gt;slightly left&lt;/span&gt; onto &lt;span class=&quot;next-street&quot;&gt;S Broad St&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;25 m&lt;/span&gt;.&lt;/span&gt;, Go to the stop &lt;span class=&quot;station&quot;&gt;Oregon Av &amp; Broad St&lt;/span&gt; and take the &lt;span class=&quot;transit&quot;&gt;bus&lt;/span&gt; &lt;span class=&quot;line&quot;&gt;68&lt;/span&gt; toward &lt;span class=&quot;destination&quot;&gt;69th St Transportation Center South Terminal&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Follow for &lt;span class=&quot;stops&quot;&gt;16 stops&lt;/span&gt;.&lt;/span&gt;, Get off at &lt;span class=&quot;station&quot;&gt;Enterprise Av &amp; Fort Mifflin Rd&lt;/span&gt;., Head &lt;span class=&quot;heading&quot;&gt;northwest&lt;/span&gt; on &lt;span class=&quot;street&quot;&gt;Enterprise Ave&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;32 m&lt;/span&gt;.&lt;/span&gt;, Turn &lt;span class=&quot;direction&quot;&gt;right&lt;/span&gt; onto &lt;span class=&quot;next-street&quot;&gt;Fort Mifflin Rd&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;1.7 km&lt;/span&gt;.&lt;/span&gt;, Turn &lt;span class=&quot;direction&quot;&gt;left&lt;/span&gt; onto &lt;span class=&quot;next-street&quot;&gt;Fort Mifflin Rd&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;75 m&lt;/span&gt;.&lt;/span&gt;, Take the street on the &lt;span class=&quot;direction&quot;&gt;right&lt;/span&gt;. &lt;span class=&quot;distance-description&quot;&gt;Go for &lt;span class=&quot;length&quot;&gt;734 m&lt;/span&gt;.&lt;/span&gt;, Arrive at &lt;span class=&quot;street&quot;&gt;Fort Mifflin Rd&lt;/span&gt;., 237, 19, 1770, 0, 41, 46, 3, 1610, 0, 14, 25, 2720, 0, 42, 1723, 76, 740, 0, 228, 19, 6529, 0, 28, 36, 3, 10420, 0, 10, 25, 7864, 0, 32, 1713, 75, 734, 0, M1, M2, M3, M4, M5, M6, M7, M8, M9, M10, M11, M12, M13, M14, M15, M16, M17, M18, PrivateTransportManeuverType, PrivateTransportManeuverType, PublicTransportManeuverType, PublicTransportManeuverType, PrivateTransportManeuverType, PrivateTransportManeuverType, PrivateTransportManeuverType, PublicTransportManeuverType, PublicTransportManeuverType, PrivateTransportManeuverType, PrivateTransportManeuverType, PublicTransportManeuverType, PublicTransportManeuverType, PrivateTransportManeuverType, PrivateTransportManeuverType, PrivateTransportManeuverType, PrivateTransportManeuverType, PrivateTransportManeuverType, NA, NA, Germantown Av &amp; Mt Pleasant Av, Germantown Av &amp; Erie Av, NA, NA, NA, Erie Station, Oregon Station, NA, NA, Oregon Av &amp; Broad St, Enterprise Av &amp; Fort Mifflin Rd, NA, NA, NA, NA, NA, NA, NA, NA, Germantown Ave, NA, NA, NA, NA, NA, NA, NA, NA, Enterprise Ave, NA, NA, NA, NA, NA, 40.0568444, 40.0583732, 40.0583732, 40.0094068, 40.0094068, 40.0092137, 40.0092459, 40.0092459, 39.9167848, 39.9167848, 39.9168277, 39.9168277, 39.8836005, 39.8836005, 39.8837721, 39.8775494, 39.8770881, 39.8786749, -75.1911711, -75.189389, -75.189389, -75.1509583, -75.1509583, -75.1508081, -75.1512265, -75.1513124, -75.1714182, -75.1714182, -75.1713324, -75.1713324, -75.2235281, -75.2235281, -75.223335, -75.2135289, -75.2129066, -75.2075897, +18693161, stopOver, 0.3478261, right, W Mt Pleasant Ave, W Mt Pleasant Ave, 0, 40.0568444, -75.1911711, 40.0567437, -75.19102, +18769947, stopOver, 0.4118199, neither, Fort Mifflin Rd, Fort Mifflin Rd, 188, 39.8786749, -75.2075897, 39.8777652, -75.2059473
+##                                                                                                                                                    response.route.publicTransportLine
+## 1 23, BSL, 68, , , , 11th St &amp; Market St -, at&amp;T Station, 69th St Transportation Center South Terminal, busPublic, railMetro, busPublic, L1, L2, L3, NA, #FF9933, NA, NA, #FF9933, NA
+##   response.route.mode.type response.route.mode.transportModes
+## 1                  fastest                    publicTransport
+##   response.route.mode.trafficMode response.route.mode.feature
+## 1                        disabled                        NULL
+##   response.route.summary.distance response.route.summary.baseTime
+## 1                           27716                            9066
+##                    response.route.summary.flags
+## 1 noThroughRoad, builtUpArea, park, privateRoad
+##                                                                response.route.summary.text
+## 1 The trip takes &lt;span class=&quot;length&quot;&gt;27.7 km&lt;/span&gt; and &lt;span class=&quot;time&quot;&gt;2:31 h&lt;/span&gt;.
+##   response.route.summary.travelTime response.route.summary.departure
+## 1                              9066        2018-07-18T12:00:00-04:00
+##      response.route.summary._type response.language
+## 1 PublicTransportRouteSummaryType             en-us</code></pre>
+</div>
+</div>
+<div id="section" class="section level3">
+<h3><span class="header-section-number">1.0.2</span> </h3>
+</div>
+<div id="preparing-looping-functions-for-parallel" class="section level3 unnumbered">
+<h3>Preparing Looping Functions for Parallel</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#gets the Data from HERE API</span>
+
+get_city =<span class="st"> </span><span class="kw">foreach</span>(<span class="dt">i=</span>urls, <span class="dt">.packages=</span><span class="st">&#39;httr&#39;</span>) <span class="op">%dopar%</span><span class="st"> </span>{
+    <span class="kw">GET</span>(i)
+  }
+
+<span class="kw">status_code</span>(results[[<span class="dv">1</span>]]) <span class="co">#Can check some to ensure it worked</span>
+
+<span class="co">#Gets the Json Content</span>
+content_city =<span class="st"> </span><span class="kw">foreach</span>(<span class="dt">i=</span>get_city, <span class="dt">.packages=</span><span class="st">&#39;httr&#39;</span>) <span class="op">%dopar%</span><span class="st"> </span>{
+  <span class="kw">content</span>(i, <span class="st">&quot;text&quot;</span>)
+}
+
+<span class="co">#munging</span>
+<span class="co">#makes the json data semi pretty</span>
+json_city =<span class="st"> </span><span class="kw">foreach</span>(<span class="dt">i=</span>content_city, <span class="dt">.packages=</span><span class="st">&#39;jsonlite&#39;</span>) <span class="op">%dopar%</span><span class="st"> </span>{
+  <span class="kw">fromJSON</span>(i, <span class="dt">flatten =</span> <span class="ot">TRUE</span>)
+}
+
+df_city =<span class="st"> </span><span class="kw">foreach</span>(<span class="dt">i=</span>json_city) <span class="op">%dopar%</span><span class="st"> </span>{
+    <span class="kw">as.data.frame</span>(i)
+  }
+
+
+full &lt;-<span class="st"> </span><span class="kw">rbindlist</span>(df_city, <span class="dt">fill =</span> <span class="ot">TRUE</span>)</code></pre></div>
+</div>
+<div id="plan-of-attack" class="section level3 unnumbered">
+<h3>Plan of Attack</h3>
+<p>To solve my 2nd large issue, I decided to leverage the resources of my university. Generally, the idea is to split up the urls into multiple lists, then run each set of URLs independently on several computers.</p>
+<p>To split up the URLs:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">list_of_URLs &lt;-<span class="st"> </span><span class="kw">split</span>(urls, <span class="kw">ceiling</span>(<span class="kw">seq_along</span>(urls)<span class="op">/</span><span class="dv">15000</span>))
+<span class="kw">str</span>(list_of_URLs)</code></pre></div>
+<pre><code>## List of 6
+##  $ 1: chr [1:15000] &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=39.88889%2C-75.23410&amp;waypoint1=2%2C39.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=39.88889%2C-75.23410&amp;waypoint1=2%2C39.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=39.88889%2C-75.23410&amp;waypoint1=2%2C40.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=39.88889%2C-75.23410&amp;waypoint1=2%2C40.&quot;| __truncated__ ...
+##  $ 2: chr [1:15000] &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=40.06858%2C-75.21000&amp;waypoint1=2%2C39.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=40.06858%2C-75.21000&amp;waypoint1=2%2C39.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=40.06858%2C-75.21000&amp;waypoint1=2%2C40.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=40.06858%2C-75.21000&amp;waypoint1=2%2C40.&quot;| __truncated__ ...
+##  $ 3: chr [1:15000] &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=40.00122%2C-75.18086&amp;waypoint1=2%2C39.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=40.00122%2C-75.18086&amp;waypoint1=2%2C39.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=40.00122%2C-75.18086&amp;waypoint1=2%2C40.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=40.00122%2C-75.18086&amp;waypoint1=2%2C40.&quot;| __truncated__ ...
+##  $ 4: chr [1:15000] &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=39.95260%2C-75.19975&amp;waypoint1=2%2C39.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=39.95260%2C-75.19975&amp;waypoint1=2%2C39.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=39.95260%2C-75.19975&amp;waypoint1=2%2C40.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=39.95260%2C-75.19975&amp;waypoint1=2%2C40.&quot;| __truncated__ ...
+##  $ 5: chr [1:15000] &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=40.02618%2C-75.04135&amp;waypoint1=2%2C39.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=40.02618%2C-75.04135&amp;waypoint1=2%2C39.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=40.02618%2C-75.04135&amp;waypoint1=2%2C40.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=40.02618%2C-75.04135&amp;waypoint1=2%2C40.&quot;| __truncated__ ...
+##  $ 6: chr [1:15000] &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=39.86991%2C-75.21043&amp;waypoint1=2%2C39.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=39.86991%2C-75.21043&amp;waypoint1=2%2C39.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=39.86991%2C-75.21043&amp;waypoint1=2%2C40.&quot;| __truncated__ &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=39.86991%2C-75.21043&amp;waypoint1=2%2C40.&quot;| __truncated__ ...</code></pre>
+<p>Then on each computer I would run the code, but first specify:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">urls&lt;-<span class="st"> </span>list_of_URLs[[<span class="dv">2</span>]] <span class="co">#insert whatever subset you want to use</span>
+<span class="kw">str</span>(urls)</code></pre></div>
+<pre><code>##  chr [1:15000] &quot;https://route.cit.api.here.com/routing/7.2/calculateroute.json?waypoint0=40.06858%2C-75.21000&amp;waypoint1=2%2C39.&quot;| __truncated__ ...</code></pre>
+<p>This worked magically. I used several computers over 3 days and got all the data I need. The internet and books constantly preached that 80% of these tasks are data collection / wrangling and only 20% was the actual analysis. I think I finally understand what they mean…But now for the fun! The conclusions and results!!!</p>
+<hr />
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="7">
+<li id="fn7"><p>One of only 3 positions in life that take shotgun seat in front of good friend. The other two being parents and grandparents.<a href="part-3-a-catastrophic-issue.html#fnref7">↩</a></p></li>
+<li id="fn8"><p>One of only 3 positions in life that take shotgun seat in front of good friend. The other two being parents and grandparents.<a href="part-3-a-catastrophic-issue.html#fnref8">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="part-3-more-trips-.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="part-5-results-and-conclusion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

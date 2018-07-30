@@ -1,0 +1,778 @@
+# Part 5: Results and Conclusion {-}
+
+##Introduction {-}
+What the problem is:
+  
+  * scope
+  * next
+
+## Summary of Results {-}
+
+```{r summary_stats, echo = FALSE, warning = FALSE}
+ny_mins_summ <- summary(play_NY$minutes)
+ny_mils_summ <- summary(play_NY$miles)
+
+ny_summary_stats <- t(data.frame(ny_mils_summ = as.vector(ny_mils_summ),
+                      ny_mins_summ = as.vector(ny_mins_summ)))
+
+colnames(ny_summary_stats) <- c("Min", "1st Qu", "Median", "Mean",
+                             "3rd Qu", "Max")
+
+ph_mins_summ <- summary(play_PH$minutes)
+ph_mils_summ <- summary(play_PH$miles)
+
+ph_summary_stats <- t(data.frame(ph_mils_summ = as.vector(ph_mils_summ),
+                      ph_mins_summ = as.vector(ph_mins_summ)))
+
+colnames(ph_summary_stats) <- c("Min", "1st Qu", "Median", "Mean",
+                             "3rd Qu", "Max")
+
+dc_mins_summ <- summary(play_DC$minutes)
+dc_mils_summ <- summary(play_DC$miles)
+
+dc_summary_stats <- t(data.frame(dc_mils_summ = as.vector(dc_mils_summ),
+                      dc_mins_summ = as.vector(dc_mins_summ)))
+
+colnames(dc_summary_stats) <- c("Min", "1st Qu", "Median",
+                                "Mean","3rd Qu", "Max")
+
+acity_summs <- t(rbind(dc_summary_stats, ny_summary_stats, ph_summary_stats))
+acity_summs1 <- as.data.frame(acity_summs)
+acity_summs1 <-  acity_summs1[c(2, 6,4,1,5,3)]
+ 
+colnames(acity_summs1) <- c("DC minutes","Philly minutes","NYC minutes", "DC miles", "Philly miles", "NYC miles")
+
+##sds for all
+x <- data.frame(
+  q <- sd(play_DC$minutes),
+  w <- sd(play_PH$minutes),
+  e <- sd(play_NY$minutes),
+  a <- sd(play_DC$miles),
+  s <- sd(play_PH$miles),
+  d <- sd(play_NY$miles))
+
+colnames(x) <- c("DC minutes","Philly minutes","NYC minutes", "DC miles", "Philly miles", "NYC miles")
+
+acity_summs1 <- rbind(acity_summs1, x)
+rownames(acity_summs1) <-  c("Min", "1st Qu", "Median", "Mean",
+                             "3rd Qu", "Max", "St. Dev.")
+
+acity_summs1 %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE, position = "center")
+```
+
+What to say here:
+
+  * dc looking good
+    - least amount of skew (look at that close mean and median)
+    - lowest everything
+    - learned later on that this is partially due to DC
+  * NY and Philly are pretty close
+    - ew, look at those max values (we'll look at that soon)
+  * the difference in sd between minutes and miles is interesting
+    - maybe google how to look into that
+    
+
+##histograms {-}
+
+```{r histograms, echo = FALSE, message= FALSE, fig.width=10}
+DChisto <- ggplot() +
+  geom_histogram(data = play_DC, aes(x = minutes),fill = "#ff7400") +
+  ggtitle("DC")+
+  theme(legend.position="none")
+
+PHhisto <- ggplot() +
+  geom_histogram(data = play_PH, aes(x = minutes),fill = "#F14628") +
+  ggtitle("Philly")+
+  theme(legend.position="none")
+
+NYhisto <- ggplot() +
+  geom_histogram(data = play_NY, aes(x = minutes),fill = "#2360a5") +
+  ggtitle("NYC")+
+  theme(legend.position="none")
+
+grid.arrange(DChisto, PHhisto, NYhisto, ncol = 3)
+
+
+
+```
+
+Clearly some issues with NY and philadelphia:
+
+  * as suspected, DC is beautiful
+  * the skew of Philly and NYC is surprisingly bad
+
+
+##scatterplots {-}
+
+```{r scatterplots, echo = FALSE, fig.width=10}
+DCscatter <- ggplot() +
+  geom_point(data = play_DC, aes(x = miles, y = minutes),
+                                     color = "#ff7400") +
+  ggtitle("DC")+
+  theme(legend.position="none")
+
+PHscatter <- ggplot() +
+  geom_point(data = play_PH, aes(x = miles, y = minutes),
+                                     color = "#F14628") +
+  ggtitle("Philly")+
+  theme(legend.position="none")
+
+NYscatter <- ggplot() +
+  geom_point(data = play_NY, aes(x = miles, y = minutes),
+                                     color = "#2360a5") +
+  ggtitle("NYC")+
+  theme(legend.position="none")
+
+grid.arrange(DCscatter, PHscatter, NYscatter, ncol = 3)
+
+```
+
+
+
+Looking at these summary statistics and histogram, I would like to put forward an axiom:
+
+> Any trip over three hours, in this situation, can be defined as "Shit Luck"
+
+good points are in light blue, Bad points are in dark blue, truly evil points in black:
+
+  * let's split this shit up
+    * normal < 180
+    * 180 < bad < 300
+    * evil > 300
+
+```{r scatter_badpoints_id, echo=FALSE, fig.width=10}
+
+foo <- play_PH %>%
+  mutate(comfort = ifelse(minutes >= 300, "evil",
+              ifelse(minutes < 300 & minutes >= 181, "bad","normal"
+                     )))
+
+foo1 <- play_NY %>%
+  mutate(comfort = ifelse(minutes >= 300, "evil",
+              ifelse(minutes < 300 & minutes >= 181, "bad","normal"
+                     )))
+
+NYscatter2 <- ggplot() +
+  geom_point(data = foo1, aes(x = miles, y = minutes, color = comfort))+
+  scale_color_manual(values=c( "#0f16a8","black","#32a1fc"))+
+  ggtitle("NYC")+
+  theme(legend.position="none")
+
+PHscatter2 <- ggplot() +
+  geom_point(data = foo, aes(x = miles, y = minutes, color = comfort))+
+  scale_color_manual(values=c( "#0f16a8","black","#32a1fc"))+
+  ggtitle("PH")+
+  theme(legend.position="none")
+
+DCscatter2 <- ggplot() +
+  geom_point(data = play_DC, aes(x = miles, y = minutes),
+                                     color = "#32a1fc") +
+  ggtitle("DC")+
+  theme(legend.position="none")
+
+grid.arrange(DCscatter2, PHscatter2, NYscatter2, ncol = 3)
+
+```
+
+
+
+```{r shit_trips,echo = FALSE,  warning = FALSE}
+badluck_ny <- play_NY %>%
+  filter(minutes >=180) 
+
+badluck_ph <- play_PH %>%
+  filter(minutes >= 180)
+
+badluck_dc <- play_DC %>%
+  filter(minutes >= 180)
+#Two hours
+badluck_ny1 <- play_NY %>%
+  filter(minutes >=120) 
+
+badluck_ph1 <- play_PH %>%
+  filter(minutes >= 120)
+
+badluck_dc1 <- play_DC %>%
+  filter(minutes >= 120)
+
+#percent of trips that are absurd
+df <- data.frame(DC =
+round((nrow(badluck_dc)/nrow(play_DC))*100, digits = 2),
+PH = 
+round((nrow(badluck_ph)/nrow(play_PH))*100, digits = 2),
+NY = 
+round((nrow(badluck_ny)/nrow(play_NY))*100, digits = 2))
+
+df1 <- data.frame(DC =
+round((nrow(badluck_dc1)/nrow(play_DC))*100, digits = 2),
+PH = 
+round((nrow(badluck_ph1)/nrow(play_PH))*100, digits = 2),
+NY = 
+round((nrow(badluck_ny1)/nrow(play_NY))*100, digits = 2))
+
+df <- rbind(df, df1)
+rownames(df) <- c("3 hour trip", "2 hour trip")
+
+```
+
+###Percent of Bad Trips {-}
+```{r shit_trips_table, echo=FALSE, warning=FALSE}
+df %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE, position = "float_left")
+
+```
+
+Here I will talk about  
+this shit cause  
+Im dope as fuck 
+it is the percent of bad trips in each city  
+
+
+Here are the scatterplots of only trips less than 3 hours
+shows a pretty nice casual relationship
+discuss each
+DC being a tiny city is hugely helpful
+
+```{r reduced_scatter, echo = FALSE, fig.width=10}
+goodluck_ny <- play_NY %>%
+  filter(minutes <=180) 
+
+goodluck_ph <- play_PH %>%
+  filter(minutes <= 180)
+
+PHscatter1 <- ggplot() +
+  geom_point(data = goodluck_ph, aes(x = miles, y = minutes),
+                                     color = "#F14628") +
+  ggtitle("Philly")+
+  theme(legend.position="none")
+
+NYscatter1 <- ggplot() +
+  geom_point(data = goodluck_ny, aes(x = miles, y = minutes),
+                                     color = "#2360a5") +
+  ggtitle("NYC")+
+  theme(legend.position="none")
+
+
+grid.arrange(DCscatter, PHscatter1, NYscatter1, ncol = 3)
+```
+
+##The "bad luck" trips {-}
+Both New York City and Philadelphia have some weird clusters of points evident from their scatter plot. Let's look at the trips that take more than 400 minutes.
+
+```{r echo = FALSE, warning=FALSE}
+
+evil <- play_NY %>%
+  filter(minutes >400)
+
+start_latitude <- as.vector(evil$startLat)
+tab_start <- table(start_latitude)
+tab_start <- as.data.frame(tab_start)
+tab_start_ny <- arrange(tab_start,desc(Freq))
+
+end_latitude <- as.vector(evil$endLat)
+tab_end <- table(end_latitude)
+tab_end <- as.data.frame(tab_end)
+tab_end_ny <- arrange(tab_end,desc(Freq))
+tab_end_ny <- data.frame(end_latitude = rep(NA,5), Freq = rep(NA, 5))
+
+
+evil1 <- play_PH %>%
+  filter(minutes >400)
+
+start_latitude <- as.vector(evil1$startLat)
+tab_start <- table(start_latitude)
+tab_start <- as.data.frame(tab_start)
+tab_start_ph <- arrange(tab_start,desc(Freq))
+
+
+
+end_latitude <- as.vector(evil1$endLat)
+tab_end <- table(end_latitude)
+tab_end <- as.data.frame(tab_end)
+tab_end_ph <- arrange(tab_end,desc(Freq))
+
+combine <- cbind.fill(head(tab_start_ph), head(tab_end_ph), head(tab_start_ny), head(tab_end_ny))
+combine[2:6, 5:6] <- ""
+ 
+
+combine %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE, position = "float_left")%>%
+ add_header_above(c("Philadelphia" = 4, "New York City" = 4))
+
+```
+
+Here: 
+
+  * several points in Philly
+  * Only 1 in NYC
+  * WTF is up with these points?
+
+
+## The EVIL NY POINT {-}
+```{r, echo = FALSE}
+
+evil <- play_NY %>%
+  filter(minutes >400)
+
+#GGPLOT
+foopath <- evil %>%
+  select(latitude = endLat, longitude = endLon, trip_id) %>%
+  mutate(type = rep("destination"))
+
+foopath1 <-evil %>%
+  select(latitude = startLat, longitude = startLon, trip_id) %>%
+  mutate(type = rep("origin"))
+
+foopath <- rbind(foopath, foopath1)
+foopath$type <- as.factor(foopath$type) 
+foopath$trip_id <- as.factor(foopath$trip_id)
+
+along <- gg_ny +
+  geom_point(data = foopath, aes(x = longitude, y = latitude), color = "#fdf5e6",  size = 1.5)+
+  geom_path(data=foopath, aes(x=longitude, y=latitude, group=trip_id), color = "#fdf5e6", size=0.4)+
+  theme(legend.position="none")
+
+###LEAFLET
+leaf_ny <- 
+leaflet(ny) %>%
+  addPolygons(fillColor = "#8a07ef", weight = 1, smoothFactor = 0.2,
+              opacity = 0.5 ,color = "white")%>%
+  addProviderTiles("Esri.WorldStreetMap") %>%
+  addCircleMarkers(lng = evil$startLon, lat = evil$startLat,
+                  radius = 2, color = "red")
+```
+
+Here is:
+
+  1. The routes
+  2. That one point everything is going towards
+
+```{r echo = FALSE}
+along
+leaf_ny
+```
+
+
+##Philadelphia {-}
+
+```{r echo = FALSE}
+evil <- play_PH %>%
+  filter(minutes >400)
+
+#GGPLOT
+foopath <- evil %>%
+  select(latitude = endLat, longitude = endLon, trip_id) %>%
+  mutate(type = rep("destination"))
+foopath1 <-evil %>%
+  select(latitude = startLat, longitude = startLon, trip_id) %>%
+  mutate(type = rep("origin"))
+foopath <- rbind(foopath, foopath1)
+foopath$type <- as.factor(foopath$type) 
+foopath$trip_id <- as.factor(foopath$trip_id)
+
+along <- gg_ph +
+  geom_point(data = foopath, aes(x = longitude, y = latitude, color = type), size = 1.5)+
+  geom_path(data=foopath, aes(x=longitude, y=latitude, group=trip_id), color = "#fdf5e6", size=0.4)+
+  theme(legend.position="none")
+
+# can see 2-3 bad bad points
+
+evil_ph_5 <- data.frame(
+  latitude = c(39.88880, 39.90100, 40.05352,39.88880 ,39.89117),
+  longitude =c(-75.20997, -75.21456, -75.23903, -75.20997, -75.14090)
+)
+
+leaflet_ph <- 
+leaflet(philly) %>%
+  addPolygons(fillColor = "#8a07ef", weight = 1, smoothFactor = 0.2,
+              opacity = 0.5 ,color = "white")%>%
+  addTiles() %>%
+  addCircleMarkers(lng = evil_ph_5$longitude, lat = evil_ph_5$latitude,
+                   radius = 2, color = "blue")
+
+
+```
+
+Here is:
+
+  1. The routee
+  2. there are several points that everything comes/goes to
+  3. see leaflet and rewrite
+  
+
+```{r echo = FALSE}
+along
+leaflet_ph
+```
+
+What's happening here:
+
+  1. I have take a sample of 50 routes from the top 10% of trips, bottom 10% of cities, and middle 50
+  2. plotted those routes
+
+
+```{r echo = FALSE}
+acity_dat <- play_DC
+
+foo <- acity_dat %>%
+  arrange(minutes)
+#getting 10% of rows
+x <- nrow(foo)*.1
+
+foo <- foo[1:x,]%>%
+  sample_n(50) 
+
+foopath <- foo %>%
+  select(latitude = endLat, longitude = endLon, trip_id) %>%
+  mutate(type = rep("destination"))
+foopath1 <- foo %>%
+  select(latitude = startLat, longitude = startLon, trip_id) %>%
+  mutate(type = rep("origin"))
+foopath <- rbind(foopath, foopath1)
+foopath$type <- as.factor(foopath$type) 
+foopath$trip_id <- as.factor(foopath$trip_id)
+
+along_short_dc <- gg_dc +
+  geom_point(data = foopath, aes(x = longitude, y = latitude),color = "#fdf5e6", size = 1.5)+
+  geom_path(data=foopath, aes(x=longitude, y=latitude, group=trip_id), color = "#fdf5e6", size=0.4)+
+  theme(legend.position="none")
+
+#######
+#getting top 10% sample
+foo <- acity_dat %>%
+  arrange(desc(minutes))
+
+#getting 10% of rows
+x <- nrow(foo)*.1
+
+foo <- foo[1:x,]%>%
+  sample_n(50) 
+
+foopath <- foo %>%
+  select(latitude = endLat, longitude = endLon, trip_id) %>%
+  mutate(type = rep("destination"))
+foopath1 <- foo %>%
+  select(latitude = startLat, longitude = startLon, trip_id) %>%
+  mutate(type = rep("origin"))
+foopath <- rbind(foopath, foopath1)
+foopath$type <- as.factor(foopath$type) 
+foopath$trip_id <- as.factor(foopath$trip_id)
+
+along_long_dc <- gg_dc +
+  geom_point(data = foopath, aes(x = longitude, y = latitude),color = "#fdf5e6", size = 1.5)+
+  geom_path(data=foopath, aes(x=longitude, y=latitude, group=trip_id), color = "#fdf5e6", size=0.4)+
+  theme(legend.position="none")
+
+
+#some of the middle
+
+foo <- acity_dat %>%
+  arrange(desc(minutes))
+#getting 10% of rows
+x <- (nrow(foo)*.1)*.5
+
+x <- (0.5*nrow(acity_dat))-x
+y <- (0.5*nrow(acity_dat))+x
+
+foo <- foo[x:y,]%>%
+  sample_n(50) 
+
+foopath <- foo %>%
+  select(latitude = endLat, longitude = endLon, trip_id) %>%
+  mutate(type = rep("destination"))
+foopath1 <- foo %>%
+  select(latitude = startLat, longitude = startLon, trip_id) %>%
+  mutate(type = rep("origin"))
+foopath <- rbind(foopath, foopath1)
+foopath$type <- as.factor(foopath$type) 
+foopath$trip_id <- as.factor(foopath$trip_id)
+
+along_med_dc <- gg_dc +
+  geom_point(data = foopath, aes(x = longitude, y = latitude),color = "#fdf5e6", size = 1.5)+
+  geom_path(data=foopath, aes(x=longitude, y=latitude, group=trip_id), color = "#fdf5e6", size=0.4)+
+  theme(legend.position="none")
+
+```
+
+
+```{r echo = FALSE}
+
+acity_dat <- play_PH
+
+foo <- acity_dat %>%
+  arrange(minutes)
+#getting 10% of rows
+x <- nrow(foo)*.1
+
+foo <- foo[1:x,]%>%
+  sample_n(50) 
+
+foopath <- foo %>%
+  select(latitude = endLat, longitude = endLon, trip_id) %>%
+  mutate(type = rep("destination"))
+foopath1 <- foo %>%
+  select(latitude = startLat, longitude = startLon, trip_id) %>%
+  mutate(type = rep("origin"))
+foopath <- rbind(foopath, foopath1)
+foopath$type <- as.factor(foopath$type) 
+foopath$trip_id <- as.factor(foopath$trip_id)
+
+along_short_ph <- gg_ph +
+  geom_point(data = foopath, aes(x = longitude, y = latitude),color = "#fdf5e6", size = 1.5)+
+  geom_path(data=foopath, aes(x=longitude, y=latitude, group=trip_id), color = "#fdf5e6", size=0.4)+
+  theme(legend.position="none")
+
+#######
+#getting top 10% sample
+foo <- acity_dat %>%
+  arrange(desc(minutes))
+
+#getting 10% of rows
+x <- nrow(foo)*.1
+
+foo <- foo[1:x,]%>%
+  sample_n(50) 
+
+foopath <- foo %>%
+  select(latitude = endLat, longitude = endLon, trip_id) %>%
+  mutate(type = rep("destination"))
+foopath1 <- foo %>%
+  select(latitude = startLat, longitude = startLon, trip_id) %>%
+  mutate(type = rep("origin"))
+foopath <- rbind(foopath, foopath1)
+foopath$type <- as.factor(foopath$type) 
+foopath$trip_id <- as.factor(foopath$trip_id)
+
+along_long_ph <- gg_ph +
+  geom_point(data = foopath, aes(x = longitude, y = latitude),color = "#fdf5e6", size = 1.5)+
+  geom_path(data=foopath, aes(x=longitude, y=latitude, group=trip_id), color = "#fdf5e6", size=0.4)+
+  theme(legend.position="none")
+
+
+#some of the middle
+
+foo <- acity_dat %>%
+  arrange(desc(minutes))
+#getting 10% of rows
+x <- (nrow(foo)*.1)*.5
+
+x <- (0.5*nrow(acity_dat))-x
+y <- (0.5*nrow(acity_dat))+x
+
+foo <- foo[x:y,]%>%
+  sample_n(50) 
+
+foopath <- foo %>%
+  select(latitude = endLat, longitude = endLon, trip_id) %>%
+  mutate(type = rep("destination"))
+foopath1 <- foo %>%
+  select(latitude = startLat, longitude = startLon, trip_id) %>%
+  mutate(type = rep("origin"))
+foopath <- rbind(foopath, foopath1)
+foopath$type <- as.factor(foopath$type) 
+foopath$trip_id <- as.factor(foopath$trip_id)
+
+along_med_ph <- gg_ph +
+  geom_point(data = foopath, aes(x = longitude, y = latitude),color = "#fdf5e6", size = 1.5)+
+  geom_path(data=foopath, aes(x=longitude, y=latitude, group=trip_id), color = "#fdf5e6", size=0.4)+
+  theme(legend.position="none")
+
+```
+
+
+
+```{r echo = FALSE}
+
+
+acity_dat <- play_NY
+
+foo <- acity_dat %>%
+  arrange(minutes)
+#getting 10% of rows
+x <- nrow(foo)*.1
+
+foo <- foo[1:x,]%>%
+  sample_n(50) 
+
+foopath <- foo %>%
+  select(latitude = endLat, longitude = endLon, trip_id) %>%
+  mutate(type = rep("destination"))
+foopath1 <- foo %>%
+  select(latitude = startLat, longitude = startLon, trip_id) %>%
+  mutate(type = rep("origin"))
+foopath <- rbind(foopath, foopath1)
+foopath$type <- as.factor(foopath$type) 
+foopath$trip_id <- as.factor(foopath$trip_id)
+
+along_short_ny <- gg_ny +
+  geom_point(data = foopath, aes(x = longitude, y = latitude),color = "#fdf5e6", size = 1.5)+
+  geom_path(data=foopath, aes(x=longitude, y=latitude, group=trip_id), color = "#fdf5e6", size=0.4)+
+  theme(legend.position="none")
+
+#######
+#getting top 10% sample
+foo <- acity_dat %>%
+  arrange(desc(minutes))
+
+#getting 10% of rows
+x <- nrow(foo)*.1
+
+foo <- foo[1:x,]%>%
+  sample_n(50) 
+
+foopath <- foo %>%
+  select(latitude = endLat, longitude = endLon, trip_id) %>%
+  mutate(type = rep("destination"))
+foopath1 <- foo %>%
+  select(latitude = startLat, longitude = startLon, trip_id) %>%
+  mutate(type = rep("origin"))
+foopath <- rbind(foopath, foopath1)
+foopath$type <- as.factor(foopath$type) 
+foopath$trip_id <- as.factor(foopath$trip_id)
+
+along_long_ny <- gg_ny +
+  geom_point(data = foopath, aes(x = longitude, y = latitude),color = "#fdf5e6", size = 1.5)+
+  geom_path(data=foopath, aes(x=longitude, y=latitude, group=trip_id), color = "#fdf5e6", size=0.4)+
+  theme(legend.position="none")
+
+
+#some of the middle
+
+foo <- acity_dat %>%
+  arrange(desc(minutes))
+#getting 10% of rows
+x <- (nrow(foo)*.1)*.5
+
+x <- (0.5*nrow(acity_dat))-x
+y <- (0.5*nrow(acity_dat))+x
+
+foo <- foo[x:y,]%>%
+  sample_n(50) 
+
+foopath <- foo %>%
+  select(latitude = endLat, longitude = endLon, trip_id) %>%
+  mutate(type = rep("destination"))
+foopath1 <- foo %>%
+  select(latitude = startLat, longitude = startLon, trip_id) %>%
+  mutate(type = rep("origin"))
+foopath <- rbind(foopath, foopath1)
+foopath$type <- as.factor(foopath$type) 
+foopath$trip_id <- as.factor(foopath$trip_id)
+
+along_med_ny <- gg_ny +
+  geom_point(data = foopath, aes(x = longitude, y = latitude),color = "#fdf5e6", size = 1.5)+
+  geom_path(data=foopath, aes(x=longitude, y=latitude, group=trip_id), color = "#fdf5e6", size=0.4)+
+  theme(legend.position="none")
+
+```
+
+### Sample of Short, Medium, and Long Trips {-}
+```{r echo = FALSE, fig.height = 7, fig.width = 7}
+grid.arrange(along_short_dc,along_med_dc, along_long_dc,
+             along_short_ph,along_med_ph, along_long_ph,
+             along_short_ny,along_med_ny, along_long_ny, ncol = 3)
+```
+
+##Neighborhoods individual {-}
+
+okay so app being in the rivers or oceans can be both really negative and realy positive
+
+```{r echo = FALSE}
+##Philly
+
+foo <- play_PH %>%
+  group_by(startLat)%>%
+  filter(n()>2)%>%
+  summarise_all(mean) %>%
+  arrange(minutes)
+
+
+#the winner has 1 trip and is delaware rive to delaware river and takes ~20 minutes
+head_neighborhoods_ph <- data.frame(
+        latitude = foo$startLat[1:10],
+        longitude =foo$startLon[1:10])
+
+along <- gg_ph +
+  geom_point(data = head_neighborhoods_ph, aes(x = longitude, y = latitude), color = "#fdf5e6",  size = 1.5)
+
+
+leaf_ph_neigh <- 
+  leaflet(philly) %>%
+  addPolygons(fillColor = "#8a07ef", weight = 1, smoothFactor = 0.2,
+              opacity = 0.5 ,color = "white")%>%
+  addProviderTiles("Esri.WorldStreetMap") %>%
+  addCircleMarkers(lng = head_neighborhoods_ph$longitude, lat = head_neighborhoods_ph$latitude,
+                   radius = 2, color = "red")
+
+leaf_ph_neigh
+
+```
+
+<br>
+
+```{r echo = FALSE}
+###DC
+
+foo <- play_DC %>%
+  group_by(startLat)%>%
+  filter(n()>3 )%>%
+  summarise_all(mean) %>%
+  arrange(minutes)
+
+
+#the winner has 1 trip and is delaware rive to delaware river and takes ~20 minutes
+head_neighborhoods_dc <- data.frame(
+  latitude = foo$startLat[1:10],
+  longitude =foo$startLon[1:10])
+
+along <- gg_dc +
+  geom_point(data = head_neighborhoods_dc, aes(x = longitude, y = latitude), color = "#fdf5e6",  size = 1.5)
+
+
+leaf_dc_neigh <- 
+  leaflet(dc) %>%
+  addPolygons(fillColor = "#8a07ef", weight = 1, smoothFactor = 0.2,
+              opacity = 0.5 ,color = "white")%>%
+  addProviderTiles("Esri.WorldStreetMap") %>%
+  addCircleMarkers(lng = head_neighborhoods_dc$longitude, lat = head_neighborhoods_dc$latitude,
+                   radius = 2, color = "red")
+
+leaf_dc_neigh
+```
+
+<br>
+
+```{r echo = FALSE}
+###NY
+
+foo <- play_NY %>%
+  group_by(startLat)%>%
+  filter(n()>20 )%>%
+  summarise_all(mean) %>%
+  arrange(minutes)
+
+#the winner has 1 trip and is delaware rive to delaware river and takes ~20 minutes
+head_neighborhoods_ny <- data.frame(
+  latitude = foo$startLat[1:10],
+  longitude =foo$startLon[1:10])
+
+along <- gg_ny +
+  geom_point(data = head_neighborhoods_ny, aes(x = longitude, y = latitude), color = "#fdf5e6",  size = 1.5)
+
+
+leaf_ny_neigh <- 
+  leaflet(ny) %>%
+  addPolygons(fillColor = "#8a07ef", weight = 1, smoothFactor = 0.2,
+              opacity = 0.5 ,color = "white")%>%
+  addProviderTiles("Esri.WorldStreetMap") %>%
+  addCircleMarkers(lng = head_neighborhoods_ny$longitude, lat = head_neighborhoods_ny$latitude,
+                   radius = 2, color = "red")
+
+leaf_ny_neigh
+```
+
+One of the coolest things about NYC is the spread of the best locations to start. DC and Philly, they're very bunched up.

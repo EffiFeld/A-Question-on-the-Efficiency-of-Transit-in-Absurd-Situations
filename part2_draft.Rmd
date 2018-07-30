@@ -1,0 +1,232 @@
+#Part 2: Shapefiles and Progress {-}
+
+
+```{r echo=FALSE, out.width = '50%'}
+knitr::include_graphics("Septa_logo.png")
+
+```
+
+
+The main lesson from part 1 is that I'm going to have to be a little less lazy in this project. The minitua is that I needed:
+ 
+   1. a way to graph only the city limits itself  
+   2. a way to generate random points within that irregular polygon
+
+Googling told me that what I needed was a shapefile, "The shapefile format is a popular geospatial vector data format for geographic information system (GIS) software...The shapefile format can spatially describe vector features: points, lines, and polygons, representing, for example, water wells, rivers, and lakes."[^4]
+
+At first, it looked like this required me to download a bunch of files from the internet and load them all into R. At first because of the blessed package Tigris which allows users to download shapefiles from the US Census Bureau.
+
+The below code is using the TIGRIS package to grab the files for Philadelphia, New York City, and Washington D.C.
+```{r echo = FALSE, message= FALSE, warning = FALSE, fig.width=10, fig.height=5}
+
+grid.arrange(gg_ph, gg_ny, gg_dc, ncol = 3)
+
+```
+Okay great - we have our city polygons.
+## Getting Random Points {-}
+To work with the shapefiles in R, the package `sp` was used. This package has a great function `spsample` which magically spits out the random numbers. At first, I still thought I'd have to figure out how to divide the cities into shapes I could find random points within then recombine.
+
+I thought a good starting point would be to get 300 points, 150 origin and 150 destination, and find the directions between them. I'll show an example of that workflow using only Philadelphia.
+
+
+```{r, cache = TRUE}
+number_sample <- 150  #This is the number of trips we want to test
+city_file <- philly #This is what city to get points for
+
+origin <- spsample(city_file, n = number_sample, "random") %>%
+  as.data.frame()
+origin <- origin %>%
+  select(startLat = y , startLon = x) %>%
+  mutate(trip_id = 1:nrow(origin))
+
+
+destination <- spsample(city_file, n = number_sample, "random") %>%
+  as.data.frame()
+destination <- destination %>%
+  select(endLat = y , endLon = x) %>%
+  mutate(trip_id = 1:nrow(destination))
+
+#To combine the origins and destinations
+trip <- left_join(origin,destination,by = "trip_id") %>%
+  select(trip_id,startLat, startLon, endLat, endLon)
+```
+
+```{r, echo=FALSE,warning = FALSE}
+trip1 <- trip %>%
+  select("start latitude" = startLat, "start longitude" = startLon,  "end latitude" = endLat, "end longitude" = endLon )
+
+datatable(trip1, options = list(
+  dom = 't'
+))
+```
+<br>
+
+```{r, echo = FALSE}
+origin <- origin %>%
+  select(latitude = startLat, longitude = startLon, trip_id)%>%
+  mutate(type = rep("origin"))
+destination <- destination %>%
+  select(latitude = endLat, longitude = endLon, trip_id)%>%
+  mutate(type = rep("destination"))
+
+loc_both <- rbind(origin, destination) 
+
+
+city_origin_destination <- gg_ph + 
+  geom_point(data = loc_both, aes(longitude, latitude, group = type, color =type), size =  1.5)+
+  scale_color_manual(values=c("#db7918", "#1dbdf7"))
+
+city_origin_destination  
+```
+
+Now if we want to view the "routes" themselves if the one went as the bird flew.
+
+```{r, echo = FALSE}
+
+
+trip_a2b_lines <- city_origin_destination +
+  geom_path(data=loc_both, aes(x=longitude, y=latitude, group=trip_id), size=0.5, alpha=0.5, color = "white")
+
+trip_a2b_lines
+```
+
+##Getting Routes {-}
+
+So now we have this shit.
+great package
+google way // attaches to google api
+
+```{r, echo = FALSE}
+#loading a predone dataframe so that the document doesn't
+#ping the API everytime I reknit...or ever really
+
+```
+
+```{r, eval = FALSE}
+googleway_raw_data <- lapply(1:nrow(trip), function(x){
+  
+  google_distance(origin = (locations[x, 2:3]),
+                  destination = (locations[x, 4:5]),
+                  key = key,
+                  mode = "transit")
+  
+})
+
+```
+This results in a list of lists where each holds the data of 1 trip.
+```{r}
+googleway_raw_data[[5]] #looking at the fifth list, which is also the fifth set of coordinates
+```
+
+So, some serious data munging is needed... *cue the montage music*
+
+```{r, warning= FALSE}
+foo <- do.call(what = "rbind",
+               args = lapply(googleway_raw_data, as.data.frame))
+
+foo <-  separate(foo, elements, into = c("km", "value", "duration", 
+                    "value2", "currency", "cost", "uk", "status2"), ",")
+
+
+foo <- 
+  select(foo, destination_addresses, origin_addresses, km, duration, cost, status)
+head(foo)
+```
+
+Now to get rid of all that annoying fluff[^5]
+
+```{r}
+##source of numextract function: http://stla.github.io/stlapblog/posts/Numextract.html
+numextract <- function(string){ 
+  str_extract(string, "\\-*\\d+\\.*\\d*")
+} 
+
+foo$km <- lapply(foo$km, numextract)%>%
+  as.numeric()
+foo$cost <- substring(foo$cost, 11)
+foo$cost <- substr(foo$cost,1,nchar(foo$cost)-1) %>%
+  as.numeric()
+foo$duration <- substring(foo$duration, 26)
+foo$duration <- substr(foo$duration,1,nchar(foo$duration)-1)
+
+
+#Splitting up duration from XX hour(s) XX minute(s), to seperate columns
+
+foo1 <- separate(foo, duration, into = c("hours", "minutes"), sep = -7)
+foo1$hours <- gsub("[^0-9]", "", foo1$hours)
+foo1$minutes <- gsub("[^0-9]", "",foo1$minutes)
+foo1$hours <- as.numeric(foo1$hours)
+foo1$minutes <- as.numeric(foo1$minutes)
+
+#for trips that take less than an hour
+#doesnt murk with invalid trips because of other apparent NAS
+foo1$hours[is.na(foo1$hours)] <- 0
+
+#creating a total minutes section
+foo1 <- foo1 %>% 
+  mutate(duration_minutes = (hours*60)+minutes)%>%
+  mutate(trip_id = 1:nrow(foo1))
+
+#merging with trip to have coordinates
+full_AB_GOOGLE <- left_join(foo1, trip,by = "trip_id")
+
+```
+
+
+```{r, echo=FALSE,warning = FALSE}
+full_AB_GOOGLE1 <- full_AB_GOOGLE
+
+full_AB_GOOGLE1$startLat <- round(full_AB_GOOGLE1$startLat, digits = 4)
+full_AB_GOOGLE1$startLon <- round(full_AB_GOOGLE1$startLon, digits = 4)
+full_AB_GOOGLE1$endLat <- round(full_AB_GOOGLE1$endLat, digits = 4)
+full_AB_GOOGLE1$endLon <- round(full_AB_GOOGLE1$endLon, digits = 4)
+full_AB_GOOGLE1 <- full_AB_GOOGLE1 %>%
+  select(origin_addresses, destination_addresses, duration_minutes, km, cost, startLat, startLon, endLat, endLon)
+
+datatable(full_AB_GOOGLE1, options = list(
+  dom = 'ltp'
+))
+```
+
+## Our first "good" data {-}
+Let's take a quick peak at what the data tells us before moving on.
+
+```{r warning = FALSE}
+#selecting a few choice variables and adding miles
+foo <- full_AB_GOOGLE %>%
+  select(trip_id, kilometers = km, duration = duration_minutes, cost)%>%
+  mutate(miles = round(kilometers/1.609344, digits =1))
+
+miles <- as.data.frame(c(summary(foo$miles)))
+duration <-as.data.frame(c(summary(foo$duration)))
+summary1 <- cbind(miles, duration)%>%
+  round(digits =2)
+colnames(summary1) <- c("miles", "durations")
+
+
+summary1 %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE,
+                position = "float_right")
+
+```
+
+```{r echo = FALSE, message= FALSE, warning = FALSE}
+
+histx <- 
+ggplot(data = foo, aes(duration)) + 
+  geom_histogram(bins = 10, fill = "#1f4fa3")+
+  ggtitle("Histogram of Trip Duration")
+
+scatter <- 
+ggplot() +
+  geom_point(data =foo, aes(x = duration, y = miles), color = "#f14728")+
+  ggtitle("Scatterplot of Duration vs. Miles")
+
+grid.arrange(histx, scatter,  ncol = 2)
+
+```
+
+******
+[^4]: [Wikipedia ShapefileArticle](https://en.wikipedia.org/wiki/Shapefile)
+[^5]: I hope it's clear enough from the code chunk, but I want to make it clear that the numextract function is not my own. I found it on: http://stla.github.io/stlapblog/posts/Numextract.html

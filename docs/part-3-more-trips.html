@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>A Question on the Efficiency of Transit   in Absurd Situations</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="A Question on the Efficiency of Transit   in Absurd Situations" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A Question on the Efficiency of Transit   in Absurd Situations" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Effi Feldblum">
+
+
+<meta name="date" content="2018-07-29">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="part-2-shapefiles-and-progress.html">
+<link rel="next" href="part-4-a-catastrophic-issue.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.1/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.1.17/leaflet-providers.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.1/leaflet-providers-plugin.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"Transit BBBAABBY</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Part 1: The Idea</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#plan-of-attack-1"><i class="fa fa-check"></i>Plan of Attack 1</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#packages"><i class="fa fa-check"></i>Packages</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#lets-get-started"><i class="fa fa-check"></i>Let’s Get Started</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#well-fuck"><i class="fa fa-check"></i>Well Fuck</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-2-shapefiles-and-progress.html"><a href="part-2-shapefiles-and-progress.html"><i class="fa fa-check"></i>Part 2: Shapefiles and Progress</a><ul>
+<li class="chapter" data-level="" data-path="part-2-shapefiles-and-progress.html"><a href="part-2-shapefiles-and-progress.html#getting-routes"><i class="fa fa-check"></i>Getting Routes</a></li>
+<li class="chapter" data-level="" data-path="part-2-shapefiles-and-progress.html"><a href="part-2-shapefiles-and-progress.html#our-first-good-data"><i class="fa fa-check"></i>Our first “good” data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-3-more-trips.html"><a href="part-3-more-trips.html"><i class="fa fa-check"></i>Part 3: More Trips</a><ul>
+<li class="chapter" data-level="" data-path="part-3-more-trips.html"><a href="part-3-more-trips.html#getting-the-routes-using-google-api"><i class="fa fa-check"></i>Getting the Routes using Google API</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html"><i class="fa fa-check"></i>Part 4: A Catastrophic Issue</a><ul>
+<li class="chapter" data-level="" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html#finding-a-replacement-for-google-routes-api"><i class="fa fa-check"></i>Finding a Replacement for Google Routes API</a><ul>
+<li class="chapter" data-level="" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html#functions"><i class="fa fa-check"></i>Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html#running-this-code-without-emptying-my-pockets"><i class="fa fa-check"></i>Running this Code without Emptying my Pockets</a><ul>
+<li class="chapter" data-level="" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html#getting-doparallel-up-and-running"><i class="fa fa-check"></i>Getting DoParallel Up and Running</a></li>
+<li class="chapter" data-level="" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html#getting-the-functions-ready-to-access-the-here-api"><i class="fa fa-check"></i>Getting the functions ready to access the here API</a></li>
+<li class="chapter" data-level="0.0.1" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html#section"><i class="fa fa-check"></i><b>0.0.1</b> </a></li>
+<li class="chapter" data-level="" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html#preparing-looping-functions-for-parallel"><i class="fa fa-check"></i>Preparing Looping Functions for Parallel</a></li>
+<li class="chapter" data-level="" data-path="part-4-a-catastrophic-issue.html"><a href="part-4-a-catastrophic-issue.html#plan-of-attack"><i class="fa fa-check"></i>Plan of Attack</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html"><i class="fa fa-check"></i>Part 5: Results and Conclusion</a><ul>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#summary-of-results"><i class="fa fa-check"></i>Summary of Results</a></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#histograms"><i class="fa fa-check"></i>histograms</a></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#scatterplots"><i class="fa fa-check"></i>scatterplots</a><ul>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#percent-of-bad-trips"><i class="fa fa-check"></i>Percent of Bad Trips</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#the-bad-luck-trips"><i class="fa fa-check"></i>The “bad luck” trips</a></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#the-evil-ny-point"><i class="fa fa-check"></i>The EVIL NY POINT</a></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#philadelphia"><i class="fa fa-check"></i>Philadelphia</a><ul>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#sample-of-short-medium-and-long-trips"><i class="fa fa-check"></i>Sample of Short, Medium, and Long Trips</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="part-5-results-and-conclusion.html"><a href="part-5-results-and-conclusion.html#neighborhoods-individual"><i class="fa fa-check"></i>Neighborhoods individual</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Question on the Efficiency of Transit <br> in Absurd Situations</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="part-3-more-trips" class="section level1 unnumbered">
+<h1>Part 3: More Trips</h1>
+<p><img src="mta_logo.png" width="25%" /></p>
+<p>At this point we’ve found directions from 150 points to a seperate set of 150 points that were derived from within each city’s shapefile. This, honestly, seemed a bit weak to me. It answers the question…kind of. The hypothetical situation seemed to call for, well, <em>more points</em>.</p>
+<p>So the idea is this:</p>
+<ol style="list-style-type: decimal">
+<li>Forget about origins and destinations and combine the 300 points into one list<br />
+</li>
+<li>Find directions from each point to the other 299 points</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Changing the column names to allow binding</span>
+col_names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;latitude&quot;</span>, <span class="st">&quot;longitude&quot;</span> )
+
+<span class="co">#Getting the columns wanted from origin and destination, then changing the column names</span>
+coordinates &lt;-<span class="st"> </span><span class="kw">list</span>(origin, destination)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">lapply</span>( <span class="cf">function</span>(x) {
+  <span class="kw">subset</span>(x, <span class="dt">select=</span> <span class="op">-</span>trip_id)
+  }) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">lapply</span>(setNames, <span class="dt">nm =</span> col_names)
+
+<span class="co">#combining the origin and destination coordinate points</span>
+loc_both &lt;-<span class="st"> </span><span class="kw">rbind</span>(coordinates[[<span class="dv">1</span>]],coordinates[[<span class="dv">2</span>]])
+
+<span class="co">#splitting each individual set of coordinates into their own dataframe</span>
+a &lt;-<span class="st"> </span>loc_both <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">apply</span>(<span class="dv">1</span>, as.data.frame)
+
+<span class="co">#Creating a function that takes each dataframe of a list(here a), replicates the rows the number of times needed, then creates another 2 columns where the other 300 points go (including a duplicate)</span>
+multi.lapply &lt;-<span class="st"> </span><span class="cf">function</span>(a){
+  len &lt;-<span class="st"> </span><span class="kw">nrow</span>(loc_both)
+  a &lt;-<span class="st"> </span><span class="kw">lapply</span>(a, <span class="cf">function</span>(x) <span class="kw">apply</span>(x, <span class="dv">1</span>, t))
+  c &lt;-<span class="st"> </span><span class="kw">lapply</span>(a, as.data.frame)
+  d &lt;-<span class="st"> </span><span class="kw">lapply</span>(c, t)
+  e &lt;-<span class="st"> </span><span class="kw">lapply</span>(d, <span class="cf">function</span>(x)  <span class="kw">apply</span>(x, <span class="dv">2</span>, rep, len))
+  f &lt;-<span class="st"> </span><span class="kw">lapply</span>(e, <span class="cf">function</span>(x) <span class="kw">cbind</span>(x, <span class="dv">2</span>, loc_both))
+  new_col_name &lt;-<span class="st">  </span><span class="kw">c</span>(<span class="st">&quot;startLat&quot;</span>, <span class="st">&quot;startLon&quot;</span>, <span class="st">&quot;trip&quot;</span>, <span class="st">&quot;endLat&quot;</span>, <span class="st">&quot;endLon&quot;</span>)
+  g &lt;-<span class="st"> </span><span class="kw">lapply</span>(f, setNames, <span class="dt">nm =</span> new_col_name)
+  h &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(g)
+  <span class="kw">return</span>(h)
+}
+
+<span class="co">#Running the created function</span>
+philly_300_points &lt;-<span class="st"> </span><span class="kw">multi.lapply</span>(a)
+philly_300_pointsraw &lt;-philly_300_points[<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>)]
+
+<span class="co">#removing the duplicate rows</span>
+philly_300_points &lt;-<span class="st"> </span>philly_300_pointsraw <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(startLat <span class="op">!=</span><span class="st"> </span>endLat, startLon <span class="op">!=</span><span class="st"> </span>endLon)
+
+<span class="kw">head</span>(philly_300_points)</code></pre></div>
+<pre><code>##     trip startLat  startLon endLat   endLon
+## 1 origin 39.88889 -75.23410      2 39.88889
+## 2 origin 39.88889 -75.23410      2 39.98515
+## 3 origin 39.88889 -75.23410      2 40.04527
+## 4 origin 39.88889 -75.23410      2 40.03974
+## 5 origin 39.88889 -75.23410      2 39.99388
+## 6 origin 39.88889 -75.23410      2 39.98436</code></pre>
+<p>So now we have a dataframe of <code>89700</code> rows. Which is a subset of the <code>300*300 = 90,000</code> observations we expected. This is because each trip has one duplicate row (where the starting longitude = the ending longitude and the starting latitude = the ending latitude).</p>
+<div id="getting-the-routes-using-google-api" class="section level2 unnumbered">
+<h2>Getting the Routes using Google API</h2>
+<p>As before, we’ll be using the googleway package to access the google maps API <a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a>. However, I had no interest in letting this function run for the next however much time.</p>
+<p>A friend of mine recommended looking into parallel computing over the cloud. It was the perfect recommendation. I setup an AWS account and got an Rstudio environment running, which was a bit of a headache. On July 18, I had finally gotten it up and running. That night I went to sleep and left my computer on as my data was processed.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pls &lt;-<span class="st">  </span><span class="kw">mclapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(tfoo), <span class="cf">function</span>(x){
+  
+  <span class="kw">google_distance</span>(<span class="dt">origin =</span> (tfoo[x, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]),
+                  <span class="dt">destination =</span> (tfoo[x, <span class="dv">4</span><span class="op">:</span><span class="dv">5</span>]),
+                  <span class="dt">key =</span> ky,
+                  <span class="dt">mode =</span> <span class="st">&quot;transit&quot;</span>)
+  
+})</code></pre></div>
+<hr />
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="6">
+<li id="fn6"><p>Spoilder alert: not for long.<a href="part-3-more-trips.html#fnref6">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="part-2-shapefiles-and-progress.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="part-4-a-catastrophic-issue.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>
