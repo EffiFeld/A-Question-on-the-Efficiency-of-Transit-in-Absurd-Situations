@@ -36,20 +36,20 @@ ny <- tracts(state = "NY",
 
 ```{r data load, echo = FALSE,  message= FALSE, warning = FALSE, error= FALSE, results = "hide"}
 
-load("~/R/transit_bookdown2/GET_url_test.RData")
-load("~/R/transit_bookdown2/content_url_test.RData")
-load("~/R/transit_bookdown2/final_url_test.RData")
-load("~/R/transit_bookdown2/json_url_test.RData")
+load("~/R/transit_bookdown4/GET_url_test.RData")
+load("~/R/transit_bookdown4/content_url_test.RData")
+load("~/R/transit_bookdown4/final_url_test.RData")
+load("~/R/transit_bookdown4/json_url_test.RData")
 
-load("~/R/transit_bookdown2/googleway_raw_data.RData")
+load("~/R/transit_bookdown4/googleway_raw_data.RData")
 
-load("~/R/transit_bookdown2/philly_300_points.RData")
-load("~/R/transit_bookdown2/GET_url_test.RData")
+load("~/R/transit_bookdown4/philly_300_points.RData")
+load("~/R/transit_bookdown4/GET_url_test.RData")
 
 
-load("~/R/transit_bookdown2/aplay_PH.RData")
-load("~/R/transit_bookdown2/aplay_DC.RData")
-load("~/R/transit_bookdown2/aplay_NY.RData")
+load("~/R/transit_bookdown4/aplay_PH.RData")
+load("~/R/transit_bookdown4/aplay_DC.RData")
+load("~/R/transit_bookdown4/aplay_NY.RData")
 
 ```
 

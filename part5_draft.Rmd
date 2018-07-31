@@ -1,12 +1,52 @@
 # Part 5: Results and Conclusion {-}
 
-##Introduction {-}
-What the problem is:
-  
-  * scope
-  * next
-
 ## Summary of Results {-}
+
+
+```{r echo = FALSE, warning=FALSE}
+fooph <- play_PH %>%
+  group_by(startLat)%>%
+  filter(n()<2)%>%
+  summarise_all(mean) %>%
+  arrange(minutes)
+
+fooDC <- play_DC %>%
+  group_by(startLat)%>%
+  filter(n()<3 )%>%
+  summarise_all(mean) %>%
+  arrange(minutes)
+
+foony <- play_NY %>%
+  group_by(startLat)%>%
+  filter(n()<20 )%>%
+  summarise_all(mean) %>%
+  arrange(minutes)
+
+acity_row <- data.frame(
+DC = c(nrow(play_DC), 90000-nrow(play_DC), nrow(fooDC), 100*((nrow(play_DC)+nrow(fooDC))/90000)),
+Philly = c(nrow(play_PH),90000 -nrow(play_PH),nrow(fooph), 100*((nrow(play_DC) + nrow(fooph))/90000)),
+NYC = c(nrow(play_NY),90000 -nrow(play_NY),nrow(foony),  100*((nrow(play_DC) + nrow(foony))/90000))
+)
+
+rownames(acity_row) <- c("Rows Remaining", "Rows NULL","Got through","Total Percent Removed")
+
+x <- as.matrix(acity_row)
+
+```
+
+
+```{r echo=FALSE, warning=FALSE}
+kable(x, "html") %>%
+  kable_styling(bootstrap_options = "striped", full_width = F, position = "float_right")
+```
+
+Before diving into this crazy results chart, I need to admit something...I don't know what I'm talking about when it comes to [GIS](https://en.wikipedia.org/wiki/Geographic_information_system). If I were a real maps whiz, I would have limited my city polygons to only include areas people lived. There were issues with several areas within each city. 
+
+  1. Many of these issue areas resulted in, mostly, `NULL` responses from the API I used to get direction routes [^5]. These were easily removed. 
+  2. The majority of the rest were a little more *slippery* and got results from the API. An example of one of these were a point in the river would pull `298 NULLS` but would get directions to another random point within the river. These were also easily removed (except for a small few that will be discussed below).
+  3. The last bit are a bit more of a question. A question of how evil these made-up gameshow creators are. For example, several points fell into points deep within large philadelphian parks and began with 20-45 minutes of walking. These were kept in[^6].
+
+
 
 ```{r summary_stats, echo = FALSE, warning = FALSE}
 ny_mins_summ <- summary(play_NY$minutes)
@@ -59,52 +99,16 @@ rownames(acity_summs1) <-  c("Min", "1st Qu", "Median", "Mean",
 
 acity_summs1 %>%
   kable() %>%
-  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE, position = "center")
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE, position = "float_right")
 ```
 
-What to say here:
+So let's start off by congratulating our nation's capital with running away with the competition. Everything about their summary statistics tells the game show contestents to hope to see `Washington DC` next to their assigned coordinates.
 
-  * dc looking good
-    - least amount of skew (look at that close mean and median)
-    - lowest everything
-    - learned later on that this is partially due to DC
-  * NY and Philly are pretty close
-    - ew, look at those max values (we'll look at that soon)
-  * the difference in sd between minutes and miles is interesting
-    - maybe google how to look into that
-    
+New York City and Philadelphia are actually in pretty close in everything related to time. Unfortunatly the average milage trip in NYC was 9 miles (and 12 in the 3rd quartile) longer than in Philly! So, if you're a real resident of NYC, you're getting some value for your time.
 
-##histograms {-}
+The only two concerning items are the Maxs and Standard Deviations' of New York and Philadelphia. 
 
-```{r histograms, echo = FALSE, message= FALSE, fig.width=10}
-DChisto <- ggplot() +
-  geom_histogram(data = play_DC, aes(x = minutes),fill = "#ff7400") +
-  ggtitle("DC")+
-  theme(legend.position="none")
-
-PHhisto <- ggplot() +
-  geom_histogram(data = play_PH, aes(x = minutes),fill = "#F14628") +
-  ggtitle("Philly")+
-  theme(legend.position="none")
-
-NYhisto <- ggplot() +
-  geom_histogram(data = play_NY, aes(x = minutes),fill = "#2360a5") +
-  ggtitle("NYC")+
-  theme(legend.position="none")
-
-grid.arrange(DChisto, PHhisto, NYhisto, ncol = 3)
-
-
-
-```
-
-Clearly some issues with NY and philadelphia:
-
-  * as suspected, DC is beautiful
-  * the skew of Philly and NYC is surprisingly bad
-
-
-##scatterplots {-}
+## Visual Exploration {-}
 
 ```{r scatterplots, echo = FALSE, fig.width=10}
 DCscatter <- ggplot() +
@@ -125,22 +129,58 @@ NYscatter <- ggplot() +
   ggtitle("NYC")+
   theme(legend.position="none")
 
-grid.arrange(DCscatter, PHscatter, NYscatter, ncol = 3)
+```
+
+```{r histograms, echo = FALSE, message= FALSE, fig.width=10}
+DChisto <- ggplot() +
+  geom_histogram(data = play_DC, aes(x = minutes),fill = "#ff7400") +
+  ggtitle("DC")+
+  theme(legend.position="none")
+
+PHhisto <- ggplot() +
+  geom_histogram(data = play_PH, aes(x = minutes),fill = "#F14628") +
+  ggtitle("Philly")+
+  theme(legend.position="none")
+
+NYhisto <- ggplot() +
+  geom_histogram(data = play_NY, aes(x = minutes),fill = "#2360a5") +
+  ggtitle("NYC")+
+  theme(legend.position="none")
+
+```
+
+```{r , echo = FALSE, message= FALSE, fig.width=10, fig.height = 10}
+grid.arrange(DChisto, PHhisto, NYhisto,DCscatter, PHscatter, NYscatter, ncol = 3)
 
 ```
 
 
+```{r echo=FALSE, warning=FALSE}
+df <- data.frame(
+  DC = c(68.34, 61.05,7.29 ),
+  Philly = c(142.7, 134.1, 8.6),
+  NYC = c(468.5, 302.6, 165.8)
+)
 
-Looking at these summary statistics and histogram, I would like to put forward an axiom:
+rownames(df) <- c("Total Area", "Land Area", "Water Area")
 
-> Any trip over three hours, in this situation, can be defined as "Shit Luck"
+kable(df, "html") %>%
+  kable_styling(bootstrap_options = "striped", full_width = F, position = "float_right")
+```
 
-good points are in light blue, Bad points are in dark blue, truly evil points in black:
 
-  * let's split this shit up
-    * normal < 180
-    * 180 < bad < 300
-    * evil > 300
+
+As suspected, we can see some Right Tail Extremes in the histograms of minutes for both NYC and Philadelphia. On the other hand, DC what a beauty. What causes this? My hypothesis is that it has to do with the size differences between the cities. You can see this in the table of Areas. This also, I think, helps explain the appearance of more`NULL` values in the Philadelphia and New York routes because of the much larger amount of water area within city limits.
+
+Talk about skew here more. Maybe even a table.
+
+## Evil Points
+
+In order to look at these outliers within the NYC and Philly dataset, I would like to put forward an axiom:
+
+> Any trip over three hours, in this situation, can be defined as "Shit Luck", and any trip over five hours is straight up Evil.
+
+Below I've split the histograms up to show these three different types of trips. normal trips (less than 3 hours) are in light blue, bad trips are in dark blue (3 - 5 hours), and truly evil points in black (5+ hours).
 
 ```{r scatter_badpoints_id, echo=FALSE, fig.width=10}
 
@@ -175,8 +215,8 @@ DCscatter2 <- ggplot() +
 grid.arrange(DCscatter2, PHscatter2, NYscatter2, ncol = 3)
 
 ```
-
-
+<br>
+<br>
 
 ```{r shit_trips,echo = FALSE,  warning = FALSE}
 badluck_ny <- play_NY %>%
@@ -212,107 +252,22 @@ round((nrow(badluck_ph1)/nrow(play_PH))*100, digits = 2),
 NY = 
 round((nrow(badluck_ny1)/nrow(play_NY))*100, digits = 2))
 
-df <- rbind(df, df1)
-rownames(df) <- c("3 hour trip", "2 hour trip")
+df <- rbind(df1, df)
+rownames(df) <- c( "2 hour trip", "3 hour trip")
 
 ```
 
 ###Percent of Bad Trips {-}
 ```{r shit_trips_table, echo=FALSE, warning=FALSE}
-df %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE, position = "float_left")
+kable(df, "html") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE, position = "float_right")
 
 ```
 
-Here I will talk about  
-this shit cause  
-Im dope as fuck 
-it is the percent of bad trips in each city  
+What we see here is that most of the bad points are not truly evil (only 8% and 6% respectively). So, what are those points? I've decided to restrict these points to being above 400 minutes (you'll see why in a second).
 
+### NYC Evil Trips
 
-Here are the scatterplots of only trips less than 3 hours
-shows a pretty nice casual relationship
-discuss each
-DC being a tiny city is hugely helpful
-
-```{r reduced_scatter, echo = FALSE, fig.width=10}
-goodluck_ny <- play_NY %>%
-  filter(minutes <=180) 
-
-goodluck_ph <- play_PH %>%
-  filter(minutes <= 180)
-
-PHscatter1 <- ggplot() +
-  geom_point(data = goodluck_ph, aes(x = miles, y = minutes),
-                                     color = "#F14628") +
-  ggtitle("Philly")+
-  theme(legend.position="none")
-
-NYscatter1 <- ggplot() +
-  geom_point(data = goodluck_ny, aes(x = miles, y = minutes),
-                                     color = "#2360a5") +
-  ggtitle("NYC")+
-  theme(legend.position="none")
-
-
-grid.arrange(DCscatter, PHscatter1, NYscatter1, ncol = 3)
-```
-
-##The "bad luck" trips {-}
-Both New York City and Philadelphia have some weird clusters of points evident from their scatter plot. Let's look at the trips that take more than 400 minutes.
-
-```{r echo = FALSE, warning=FALSE}
-
-evil <- play_NY %>%
-  filter(minutes >400)
-
-start_latitude <- as.vector(evil$startLat)
-tab_start <- table(start_latitude)
-tab_start <- as.data.frame(tab_start)
-tab_start_ny <- arrange(tab_start,desc(Freq))
-
-end_latitude <- as.vector(evil$endLat)
-tab_end <- table(end_latitude)
-tab_end <- as.data.frame(tab_end)
-tab_end_ny <- arrange(tab_end,desc(Freq))
-tab_end_ny <- data.frame(end_latitude = rep(NA,5), Freq = rep(NA, 5))
-
-
-evil1 <- play_PH %>%
-  filter(minutes >400)
-
-start_latitude <- as.vector(evil1$startLat)
-tab_start <- table(start_latitude)
-tab_start <- as.data.frame(tab_start)
-tab_start_ph <- arrange(tab_start,desc(Freq))
-
-
-
-end_latitude <- as.vector(evil1$endLat)
-tab_end <- table(end_latitude)
-tab_end <- as.data.frame(tab_end)
-tab_end_ph <- arrange(tab_end,desc(Freq))
-
-combine <- cbind.fill(head(tab_start_ph), head(tab_end_ph), head(tab_start_ny), head(tab_end_ny))
-combine[2:6, 5:6] <- ""
- 
-
-combine %>%
-  kable() %>%
-  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE, position = "float_left")%>%
- add_header_above(c("Philadelphia" = 4, "New York City" = 4))
-
-```
-
-Here: 
-
-  * several points in Philly
-  * Only 1 in NYC
-  * WTF is up with these points?
-
-
-## The EVIL NY POINT {-}
 ```{r, echo = FALSE}
 
 evil <- play_NY %>%
@@ -346,18 +301,15 @@ leaflet(ny) %>%
                   radius = 2, color = "red")
 ```
 
-Here is:
-
-  1. The routes
-  2. That one point everything is going towards
-
 ```{r echo = FALSE}
 along
 leaf_ny
 ```
+<br>
 
+So we can see that all `298` trips that are above are from a singular location. Furthermore, the mean of those trips is a staggering `r round(mean(evil$minutes), digits = 2)`.
 
-##Philadelphia {-}
+### Philadelphia Evil Trips
 
 ```{r echo = FALSE}
 evil <- play_PH %>%
@@ -397,22 +349,74 @@ leaflet(philly) %>%
 
 ```
 
-Here is:
-
-  1. The routee
-  2. there are several points that everything comes/goes to
-  3. see leaflet and rewrite
-  
-
 ```{r echo = FALSE}
 along
 leaflet_ph
 ```
 
-What's happening here:
+```{r shit_trips_table_philly, echo=FALSE, warning=FALSE}
+tab_evil <- aggregate(evil[,1], list(evil$startLat), length)%>%
+  arrange(desc(x))
 
-  1. I have take a sample of 50 routes from the top 10% of trips, bottom 10% of cities, and middle 50
-  2. plotted those routes
+tab_evil1 <- aggregate(evil[,1], list(evil$endLat), length)%>%
+  arrange(desc(x))
+
+tab_evil <- cbind(tab_evil[1:50,], tab_evil1[1:50,])
+colnames(tab_evil) <- c("Bad Origin", "count", "Bad Destination", "count")
+tab_evil <- tab_evil[1:5,]
+
+
+kable(tab_evil, "html") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = FALSE, position = "float_right")
+
+```
+<br>
+<br>
+So, unlike NYC, Philadelphia has several locations that are either hard to get to or from. This is apparent from the table to the right.
+
+
+<br>
+## Results of Trips < 3 Hours
+
+Let's say, for no reason at all, that the gameshow guarantees that no trip will be more than 3 hours. How do the results change?
+
+
+```{r reduced_scatter, echo = FALSE, fig.width=10}
+goodluck_ny <- play_NY %>%
+  filter(minutes <=250) 
+
+goodluck_ph <- play_PH %>%
+  filter(minutes <= 250)
+
+PHscatter1 <- ggplot() +
+  geom_point(data = goodluck_ph, aes(x = miles, y = minutes),
+                                     color = "#F14628") +
+  ggtitle("Philly")+
+  theme(legend.position="none")
+
+NYscatter1 <- ggplot() +
+  geom_point(data = goodluck_ny, aes(x = miles, y = minutes),
+                                     color = "#2360a5") +
+  ggtitle("NYC")+
+  theme(legend.position="none")
+
+PHhisto2 <- ggplot() +
+  geom_histogram(data = goodluck_ph, aes(x = minutes),fill = "#F14628") +
+  ggtitle("Philly")+
+  theme(legend.position="none")
+
+NYhisto2 <- ggplot() +
+  geom_histogram(data = goodluck_ny, aes(x = minutes),fill = "#2360a5") +
+  ggtitle("NYC")+
+  theme(legend.position="none")
+
+```
+
+
+```{r , echo = FALSE, message= FALSE, fig.width=10, fig.height = 10}
+grid.arrange(DChisto, PHhisto2, NYhisto2,DCscatter, PHscatter1, NYscatter1, ncol = 3)
+
+```
 
 
 ```{r echo = FALSE}
@@ -671,15 +675,18 @@ along_med_ny <- gg_ny +
 ```
 
 ### Sample of Short, Medium, and Long Trips {-}
-```{r echo = FALSE, fig.height = 7, fig.width = 7}
+I wanted to see what some of the different length trips looked like in each city. Below is series of graphs showing short, medium, and long trips. This was done by taking sample of 50 trips from the bottom, middle, and top 10% of trips for each city.
+
+```{r echo = FALSE, fig.height = 10, fig.width = 12}
 grid.arrange(along_short_dc,along_med_dc, along_long_dc,
              along_short_ph,along_med_ph, along_long_ph,
              along_short_ny,along_med_ny, along_long_ny, ncol = 3)
 ```
 
-##Neighborhoods individual {-}
 
-okay so app being in the rivers or oceans can be both really negative and realy positive
+##Neighborhoods {-}
+
+As a last question, I was wondering where within each city was the best origin. Below are the top ten origins.
 
 ```{r echo = FALSE}
 ##Philly
@@ -775,4 +782,8 @@ leaf_ny_neigh <-
 leaf_ny_neigh
 ```
 
-One of the coolest things about NYC is the spread of the best locations to start. DC and Philly, they're very bunched up.
+
+
+[^4]: This includes some absurd shit like within rivers and oceans.
+[^5]: I used the [HERE API](https://developer.here.com/)
+[^6]: In this made-up world, I guess I'm the Evil Game Show creator. Shame for the contestents I guess....
