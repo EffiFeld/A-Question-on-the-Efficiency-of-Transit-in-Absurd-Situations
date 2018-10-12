@@ -1,4 +1,4 @@
-#Part 2: Shapefiles and Progress {-}
+# Part 2: Shapefiles and Progress {-}
 
 
 ```{r echo=FALSE, out.width = '50%'}

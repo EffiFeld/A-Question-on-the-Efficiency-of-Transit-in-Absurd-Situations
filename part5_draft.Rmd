@@ -174,7 +174,7 @@ As suspected, we can see some Right Tail Extremes in the histograms of minutes f
 
 Talk about skew here more. Maybe even a table.
 
-## Evil Points
+## Evil Points {-}
 
 In order to look at these outliers within the NYC and Philly dataset, I would like to put forward an axiom:
 
@@ -376,7 +376,7 @@ So, unlike NYC, Philadelphia has several locations that are either hard to get t
 
 
 <br>
-## Results of Trips < 3 Hours
+## Results of Trips < 3 Hours {-}
 
 Let's say, for no reason at all, that the gameshow guarantees that no trip will be more than 3 hours. How do the results change?
 
