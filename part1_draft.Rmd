@@ -107,8 +107,8 @@ leaflet(philly) %>%
 
 ```
 
-## Well Fuck
-Clearly this is an issue.  
+## A Clear Issue
+This is obviously an issue. 
 Cities are not specificially oriented in the plot of the Earth's coordinate system, they are a "random" human choice. Even worse (becuase with motivation, the perspective of the graph can be changed), cities are weird shapes. Humans shaped these amazing metropolises that span whatever land they decide. A very cool thought, but highly inconvenient for me.
 
 
