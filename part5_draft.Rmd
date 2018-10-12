@@ -42,9 +42,9 @@ kable(x, "html") %>%
 
 Before diving into this crazy results chart, I need to admit something...I don't know what I'm talking about when it comes to [GIS](https://en.wikipedia.org/wiki/Geographic_information_system). If I were a real maps whiz, I would have limited my city polygons to only include areas people lived. There were issues with several areas within each city. 
 
-  1. Many of these issue areas resulted in, mostly, `NULL` responses from the API I used to get direction routes [^5]. These were easily removed. 
+  1. Many of these issue areas resulted in, mostly, `NULL` responses from the API I used to get direction routes [^8]. These were easily removed. 
   2. The majority of the rest were a little more *slippery* and got results from the API. An example of one of these were a point in the river would pull `298 NULLS` but would get directions to another random point within the river. These were also easily removed (except for a small few that will be discussed below).
-  3. The last bit are a bit more of a question. A question of how evil these made-up gameshow creators are. For example, several points fell into points deep within large philadelphian parks and began with 20-45 minutes of walking. These were kept in[^6].
+  3. The last bit are a bit more of a question. A question of how evil these made-up gameshow creators are. For example, several points fell into points deep within large philadelphian parks and began with 20-45 minutes of walking. These were kept in[^9].
 
 
 
@@ -784,6 +784,5 @@ leaf_ny_neigh
 
 
 
-[^4]: This includes some absurd shit like within rivers and oceans.
-[^5]: I used the [HERE API](https://developer.here.com/)
-[^6]: In this made-up world, I guess I'm the Evil Game Show creator. Shame for the contestents I guess....
+[^8]: This includes some absurd areas like within rivers and oceans.
+[^9]: I used the [HERE API](https://developer.here.com/)

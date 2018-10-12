@@ -126,7 +126,7 @@ GET_url_test
 ```
 There are a few good pieces of news in this code:
 
-  *The status is 200 meaning it worked[^1]
+  *The status is 200 meaning it worked[^7]
   *The data is in JSON format
   *The size is not absurd
 
